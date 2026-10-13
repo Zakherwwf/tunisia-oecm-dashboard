@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tunisia OECM opportunities</title>
+<meta name="description" content="Tunisia: which sites could become OECMs. Site-level screening, KBA coverage and recommendations for GBF Target 3.">
+<style>
+/* WWF graphic chart: black and white principal palette; WWF Green and WWF Blue as the two secondary colours, with tints.
+   Type: WWF font (upper case) for headlines and key figures, Georgia for narrative, Open Sans for captions, charts and tables.
+   Layout: white page, black title box with the Box Logo, black-ruled tabs, cards on a hairline grid. */
+@font-face{font-family:"WWF";src:url(fonts/WWF.otf) format("opentype");font-display:swap}
+@font-face{font-family:"Open Sans";src:url(fonts/OpenSans-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Open Sans";src:url(fonts/OpenSans-SemiBold.ttf) format("truetype");font-weight:600;font-display:swap}
+@font-face{font-family:"Open Sans";src:url(fonts/OpenSans-Bold.ttf) format("truetype");font-weight:700;font-display:swap}
+:root{
+  color-scheme:light;
+  --wwf-black:#000000; --wwf-white:#ffffff;
+  /* WWF secondary palette (full strength) */
+  --wwf-yellow:#f5d200; --wwf-orange:#f07d00; --wwf-red:#da1d52; --wwf-red-violet:#9a0064; --wwf-berry:#812990; --wwf-blue:#00728f;
+  --wwf-aqua:#009191; --wwf-green:#007932; --wwf-olive:#7b8427; --wwf-medium-green:#8cc63f; --wwf-dark-brown:#552f25; --wwf-brown:#9a681c; --wwf-base:#c4bc8e;
+  /* tints */
+  --wwf-green-50:#7fbc98; --wwf-green-25:#bfddcc; --wwf-blue-50:#7fb8c7; --wwf-blue-10:#e5f1f4;
+  --wwf-grey-80:#333333; --wwf-grey-60:#666666; --wwf-grey-40:#999999; --wwf-grey-20:#cccccc; --wwf-grey-08:#ebebeb; --wwf-map-dark:#5f6062; --wwf-map-light:#d6d6d6;
+  --color-bg:var(--wwf-white); --color-panel:var(--wwf-white); --color-fg:var(--wwf-black); --color-fg-muted:var(--wwf-grey-60); --color-border-line:var(--wwf-grey-20);
+  --color-ok:var(--wwf-green); --color-warn:var(--wwf-brown); --color-bad:var(--wwf-red);
+  /* series order used by the charts: PA, OECM, PA-only line, mid class, sea, KBA 50-98, freshwater, comparison ring */
+  --series-1:var(--wwf-green); --series-2:var(--wwf-orange); --series-3:var(--wwf-olive); --series-4:var(--wwf-yellow); --series-5:var(--wwf-blue);
+  --series-6:var(--wwf-medium-green); --series-7:var(--wwf-aqua); --series-8:var(--wwf-berry);
+  --cds-chart-grid:var(--wwf-grey-08); --cds-chart-axis:var(--wwf-grey-40); --cds-chart-reference:var(--wwf-black); --cds-chart-muted:var(--wwf-grey-20); --cds-chart-status-critical:var(--wwf-red);
+  --cds-surface-popover:var(--wwf-white); --cds-border:var(--wwf-black); --cds-shadow-popover:none; --cds-text-secondary:var(--wwf-grey-60);
+  --font-wwf:"WWF","Arial Narrow","Arial",sans-serif; --font-anthropic-sans:"Open Sans","Arial",sans-serif; --font-anthropic-serif:var(--font-wwf); --font-body:Georgia,"Times New Roman",serif;
+  --cds-font-size-caption:.8125rem; --cds-font-size-body:1rem; --cds-font-size-heading:1.375rem; --cds-font-size-title:2.25rem; --cds-font-weight-medium:600;
+  --cds-gap-xs:.25rem; --cds-gap-sm:.5rem; --cds-gap-md:1rem; --cds-gap-lg:1.75rem; --cds-gap-xl:2.5rem;
+  --cds-pad-xs:.25rem; --cds-pad-sm:.5rem; --cds-pad-md:.875rem; --cds-pad-lg:1.25rem; --cds-pad-xl:1.5rem;
+  --cds-radius:0px; --cds-dur-slow:300ms; --cds-ease-out:cubic-bezier(.2,.8,.2,1);
+}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
+#dash-root{max-width:1240px;margin-inline:auto;padding-inline:max(16px,3vw);padding-block:24px 64px;box-sizing:border-box}
+
+
+/* Layout: tab bar over full-width pages; each page opens with figures, then a map beside its charts, then tables and the written report. */
+.na { --na-gap: var(--cds-gap-md); font-family: var(--font-anthropic-sans); color: var(--color-fg); display: grid; gap: var(--cds-gap-lg); }
+.na h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+.na h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+.na h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0; }
+.na p { margin: 0; max-width: 72ch; line-height: 1.55; }
+.na .muted { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.na .takeaway { color: var(--color-fg-muted); max-width: 80ch; }
+.na-head { display: grid; gap: var(--cds-gap-xs); }
+.na-tabs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); }
+.na-tabs button { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-fg-muted); padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; }
+.na-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); }
+.na-tabs button:focus-visible, .na-chip:focus-visible, .na th button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.na-page { display: grid; gap: var(--cds-gap-lg); }
+.na-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr)); gap: var(--na-gap); }
+.na-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+.na-kpi .v { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.na-kpi .l { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.na-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--na-gap); }
+.na-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; min-width: 0; }
+.na-card.wide { grid-column: 1 / -1; }
+.na-chart { position: relative; min-width: 0; }
+.na-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.na-map { position: relative; min-height: 22rem; }
+.na-map svg { display: block; width: 100%; height: auto; touch-action: none; cursor: grab; }
+.na-map .land { stroke: var(--cds-chart-axis); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+.na-map .sea { fill: var(--cds-chart-grid); stroke: none; }
+.na-map .country { cursor: pointer; }
+.na-map path { vector-effect: non-scaling-stroke; }
+.na-controls { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); align-items: center; }
+.na-chip { font: inherit; font-size: var(--cds-font-size-caption); background: var(--color-bg); color: var(--color-fg); border: 1px solid var(--color-border-line); border-radius: 999px; padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; }
+.na-chip[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+.na-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.na-legend span { display: inline-flex; align-items: center; gap: var(--cds-gap-xs); }
+.na-legend i { width: 0.75rem; height: 0.75rem; border-radius: 2px; display: inline-block; }
+.na-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); z-index: 3; max-width: 16rem; }
+.na-tip .t { color: var(--cds-text-secondary); }
+.na-tablebox { max-height: 26rem; overflow: auto; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
+.na table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.na th { position: sticky; top: 0; background: var(--color-panel); text-align: left; border-bottom: 1px solid var(--color-border-line); z-index: 1; }
+.na th button { font: inherit; font-weight: var(--cds-font-weight-medium); background: none; border: 0; color: var(--color-fg); padding: var(--cds-pad-xs) var(--cds-pad-sm); cursor: pointer; text-align: left; width: 100%; }
+.na td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.na td.n, .na th.n button { text-align: right; }
+.na tr.pick { cursor: pointer; }
+.na tr.pick:hover td { background: var(--color-bg); }
+.na .bar { position: relative; display: inline-block; height: 0.5rem; width: 4rem; background: var(--cds-chart-grid); border-radius: 4px; vertical-align: middle; margin-right: var(--cds-gap-xs); overflow: hidden; }
+.na .bar b { position: absolute; inset: 0 auto 0 0; background: var(--na-bar, currentColor); border-radius: 4px; }
+.na input[type="search"], .na select { font: inherit; font-size: var(--cds-font-size-caption); background: var(--color-bg); color: var(--color-fg); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-xs) var(--cds-pad-sm); }
+.na .pill { display: inline-block; font-size: var(--cds-font-size-caption); padding: 0 var(--cds-pad-sm); border-radius: 999px; border: 1px solid var(--color-border-line); }
+.na .pill.ok { color: var(--color-ok); } .na .pill.warn { color: var(--color-warn); } .na .pill.bad { color: var(--color-bad); }
+.na-report { display: grid; gap: var(--cds-gap-md); }
+.na-report section { display: grid; gap: var(--cds-gap-xs); }
+.na-report .scope { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-heading); margin-top: var(--cds-gap-md); }
+.na a { color: inherit; }
+.na-facts { display: grid; grid-template-columns: max-content 1fr; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); }
+.na-facts dt { color: var(--color-fg-muted); } .na-facts dd { margin: 0; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+[data-dash-source-state=empty] { color: transparent; }
+
+
+/* ---- WWF overrides on the shared dashboard layout ---- */
+.wwf-head{display:flex;gap:var(--cds-gap-md);align-items:stretch;justify-content:space-between}
+.wwf-titlebox{background:var(--wwf-black);color:var(--wwf-white);padding:var(--cds-pad-lg) var(--cds-pad-xl);display:grid;gap:var(--cds-gap-xs);flex:1;min-width:0}
+.wwf-titlebox h1{font-family:var(--font-wwf);font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(2.25rem,6vw,4rem);line-height:.95;margin:0;color:var(--wwf-white)}
+.wwf-kicker{font-family:var(--font-wwf);text-transform:uppercase;letter-spacing:.04em;font-size:1rem;color:var(--wwf-green-50);margin:0}
+.wwf-sub{font-family:var(--font-body);font-size:1rem;color:var(--wwf-white);margin:0;max-width:60ch}
+.wwf-logo{width:clamp(72px,10vw,120px);height:auto;align-self:flex-start;flex:none}
+.na .takeaway{font-family:var(--font-body);font-size:1.125rem;color:var(--wwf-black);max-width:70ch;border-left:6px solid var(--wwf-green);padding-left:var(--cds-pad-md)}
+.na h2{font-family:var(--font-wwf);font-weight:400;text-transform:uppercase;letter-spacing:.01em;font-size:var(--cds-font-size-heading);line-height:1.05}
+.na h3{font-family:var(--font-body);font-weight:700;font-size:1rem}
+.na p{font-family:var(--font-body)}
+.na p.muted,.na .muted{font-family:var(--font-anthropic-sans)}
+.na-report .scope{font-family:var(--font-wwf)!important;text-transform:uppercase;font-size:1.75rem!important;border-top:4px solid var(--wwf-black);padding-top:var(--cds-pad-sm)}
+.na-tabs{border-bottom:2px solid var(--wwf-black)}
+.na-tabs button{font-family:var(--font-wwf);text-transform:uppercase;font-size:1.125rem;letter-spacing:.02em;color:var(--wwf-grey-60);border-bottom-width:6px;margin-bottom:-2px}
+.na-tabs button[aria-selected="true"]{color:var(--wwf-black);border-bottom-color:var(--wwf-green)}
+.na-kpi{border:0;border-top:4px solid var(--wwf-black);padding-inline:0;background:transparent}
+.na-kpi:first-child{border-top-color:var(--wwf-green)}
+.na-kpi .v{font-family:var(--font-wwf);font-size:2.5rem;line-height:1}
+.na-kpi:first-child .v{color:var(--wwf-green)}
+.na-card{border:1px solid var(--wwf-grey-20);border-top:4px solid var(--wwf-black)}
+.na-chip{font-family:var(--font-anthropic-sans);border-radius:0;border-color:var(--wwf-black)}
+.na-chip[aria-pressed="true"]{background:var(--wwf-black);color:var(--wwf-white)}
+.na th{background:var(--wwf-black)}
+.na th button{color:var(--wwf-white);font-family:var(--font-anthropic-sans)}
+.na td{font-family:var(--font-anthropic-sans)}
+.na tr.pick:hover td{background:var(--wwf-green-25)}
+.wwf-kicker{color:var(--wwf-medium-green)!important}
+.na-tabs button[aria-selected="true"]{border-bottom-color:var(--wwf-orange)!important}
+/* KPI rules carry the category colour: land/PA green, OECM orange, sea blue, KBA berry, wetlands aqua */
+#overview .na-kpi:nth-child(2){border-top-color:var(--wwf-green)} #overview .na-kpi:nth-child(3){border-top-color:var(--wwf-orange)}
+#overview .na-kpi:nth-child(4),#overview .na-kpi:nth-child(5){border-top-color:var(--wwf-blue)} #overview .na-kpi:nth-child(6){border-top-color:var(--wwf-berry)}
+#overview .na-kpi:nth-child(3) .v{color:var(--wwf-orange)} #overview .na-kpi:nth-child(4) .v{color:var(--wwf-blue)} #overview .na-kpi:nth-child(6) .v{color:var(--wwf-berry)}
+#country-kpis .na-kpi:nth-child(2),#country-kpis .na-kpi:nth-child(5){border-top-color:var(--wwf-green)} #country-kpis .na-kpi:nth-child(3){border-top-color:var(--wwf-orange)}
+#country-kpis .na-kpi:nth-child(4),#country-kpis .na-kpi:nth-child(6){border-top-color:var(--wwf-blue)} #country-kpis .na-kpi:nth-child(7){border-top-color:var(--wwf-berry)}
+#country-kpis .na-kpi:nth-child(8){border-top-color:var(--wwf-aqua)}
+#country-kpis .na-kpi:nth-child(3) .v{color:var(--wwf-orange)} #country-kpis .na-kpi:nth-child(4) .v{color:var(--wwf-blue)} #country-kpis .na-kpi:nth-child(7) .v{color:var(--wwf-berry)} #country-kpis .na-kpi:nth-child(8) .v{color:var(--wwf-aqua)}
+.na .takeaway{border-left-color:var(--wwf-orange)!important}
+.na .pill{border-radius:0;font-family:var(--font-anthropic-sans)}
+.na-tip{border-radius:0;font-family:var(--font-anthropic-sans)}
+.na-map .sea{fill:var(--wwf-blue-10)}
+.na-map path.other{fill:var(--wwf-map-dark)!important;stroke:var(--wwf-white)!important}
+.na-map path.this{fill:var(--wwf-map-light)!important;stroke:var(--wwf-grey-60)}
+.na-map path.country{stroke:var(--wwf-white)!important;stroke-width:1.2}
+.na-facts dd{font-family:var(--font-anthropic-sans)}
+.wwf-foot{margin-top:2.5rem;border-top:4px solid var(--wwf-black);padding-top:var(--cds-pad-md);display:grid;gap:var(--cds-gap-xs);font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60)}
+@media (max-width:560px){.wwf-head{flex-direction:column-reverse}.wwf-logo{align-self:flex-end}}
+/* ---- Methodology page ---- */
+.mt{gap:var(--cds-gap-xl)}
+.mt-intro{display:grid;gap:var(--cds-gap-sm);border-top:6px solid var(--wwf-black);padding-top:var(--cds-pad-md)}
+.mt-eyebrow{font-family:var(--font-wwf)!important;text-transform:uppercase;letter-spacing:.04em;color:var(--wwf-orange);margin:0}
+.mt-h1{font-family:var(--font-wwf)!important;font-weight:400;text-transform:uppercase;font-size:clamp(2rem,4.5vw,3rem)!important;line-height:1;margin:0}
+.mt-lede{font-family:var(--font-body);font-size:1.125rem!important;line-height:1.6;max-width:75ch;margin:0}
+.mt-toc{display:flex;flex-wrap:wrap;gap:var(--cds-gap-xs)}
+.mt-toc a{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);text-decoration:none;color:var(--wwf-black);border:1px solid var(--wwf-black);padding:.2rem .55rem}
+.mt-toc a:hover,.mt-toc a:focus-visible{background:var(--wwf-black);color:var(--wwf-white);outline:none}
+.mt-block{display:grid;gap:var(--cds-gap-md);scroll-margin-top:1rem}
+.mt-h2{font-family:var(--font-wwf)!important;font-weight:400;text-transform:uppercase;font-size:clamp(1.5rem,3vw,2.1rem)!important;line-height:1.05;margin:0;display:flex;gap:.6rem;align-items:center;text-wrap:balance;border-bottom:2px solid var(--wwf-black);padding-bottom:.4rem}
+.mt-num{display:inline-grid;place-items:center;min-width:2.2rem;height:2.2rem;background:var(--wwf-black);color:var(--wwf-white);font-size:1.3rem;flex:none}
+.mt-h3{font-family:var(--font-wwf)!important;font-weight:400!important;text-transform:uppercase;font-size:1.3rem!important;margin:var(--cds-gap-sm) 0 0;border-left:8px solid var(--c,var(--wwf-black));padding-left:.6rem}
+.mt p,.mt li,.mt dd{font-family:var(--font-body);font-size:1rem;line-height:1.6}
+.mt p{max-width:78ch;margin:0}
+.mt-why{background:var(--wwf-grey-08);padding:var(--cds-pad-md) var(--cds-pad-lg);border-left:6px solid var(--wwf-black)}
+.mt-sub{margin:0;padding-left:1.4rem;display:grid;gap:.45rem;max-width:80ch}
+.mt-sub li::marker{font-family:var(--font-wwf);color:var(--wwf-green);font-size:1.1rem}
+.mt-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--cds-gap-lg);align-items:start}
+.mt-fig{margin:0;min-width:0}
+.mt-fig svg{display:block;width:100%;height:auto}
+.mt-fig figcaption{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60);margin-top:.3rem}
+.mt-wide{overflow-x:auto}
+.mt-wide svg{min-width:640px}
+.mt-svgt{font-family:var(--font-anthropic-sans);font-size:14px;font-weight:600;fill:var(--wwf-black)}
+.mt-svgs{font-family:var(--font-anthropic-sans);font-size:12px;fill:var(--wwf-grey-80)}
+.mt-svgw{font-family:var(--font-wwf);font-size:26px;fill:var(--wwf-white)}
+.mt-fw{font-family:var(--font-wwf);font-size:17px;fill:var(--wwf-white);text-anchor:middle}
+.mt-ft{font-family:var(--font-anthropic-sans);font-size:13px;font-weight:600;fill:var(--wwf-black);text-anchor:middle}
+.mt-fs{font-family:var(--font-anthropic-sans);font-size:11.5px;fill:var(--wwf-white);text-anchor:middle;opacity:.9}
+.mt-big{font-family:var(--font-wwf);font-size:44px;fill:var(--wwf-black)}
+.mt-gloss{display:grid;grid-template-columns:minmax(9rem,max-content) 1fr;gap:.5rem 1.2rem;margin:0}
+.mt-gloss dt{font-family:var(--font-wwf);text-transform:uppercase;font-size:1.05rem;color:var(--wwf-green)}
+.mt-gloss dd{margin:0}
+@media (max-width:560px){.mt-gloss{grid-template-columns:1fr}.mt-gloss dd{margin-bottom:.4rem}}
+.mt-example{border:2px solid var(--wwf-blue);padding:var(--cds-pad-md) var(--cds-pad-lg);display:grid;gap:.4rem;background:var(--wwf-blue-10)}
+.mt-ex-h{font-family:var(--font-wwf)!important;text-transform:uppercase;color:var(--wwf-blue);font-size:1.1rem!important;margin:0}
+.mt-pitfall{border-left:8px solid var(--wwf-red);background:#fbe4eb;padding:var(--cds-pad-md) var(--cds-pad-lg);font-family:var(--font-body)}
+.mt-callout{padding:var(--cds-pad-md) var(--cds-pad-lg);font-family:var(--font-body);line-height:1.6}
+.mt-c-green{background:var(--wwf-green-25);border-left:8px solid var(--wwf-green)}
+.mt-c-blue{background:var(--wwf-blue-10);border-left:8px solid var(--wwf-blue)}
+.mt-c-orange{background:#fde5cc;border-left:8px solid var(--wwf-orange)}
+.mt-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:var(--cds-gap-md)}
+.mt-src{border-top:8px solid var(--c);padding:var(--cds-pad-md);background:var(--wwf-grey-08);display:grid;gap:.3rem;align-content:start}
+.mt-src-h{font-family:var(--font-wwf)!important;text-transform:uppercase;font-size:1.1rem!important;color:var(--c)}
+.mt-src p{font-size:.92rem}
+.mt code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:var(--wwf-grey-08);padding:.05rem .3rem}
+.mt-table{border-collapse:collapse;width:100%;font-size:var(--cds-font-size-caption)}
+.mt-table th{background:var(--wwf-black);color:var(--wwf-white);text-align:left;padding:.4rem .6rem;font-weight:600;position:static;font-family:var(--font-anthropic-sans)}
+.mt-table td{border-bottom:1px solid var(--wwf-grey-20);padding:.4rem .6rem;vertical-align:top;font-family:var(--font-anthropic-sans)}
+.mt-tablebox{overflow-x:auto}
+.mt-dec td:first-child{white-space:nowrap}
+.mt-formula{font-family:var(--font-anthropic-sans);background:var(--wwf-black);color:var(--wwf-white);padding:var(--cds-pad-md) var(--cds-pad-lg);font-size:1.05rem}
+.mt-formula-big{font-family:var(--font-wwf);text-transform:uppercase;font-size:clamp(1.1rem,2.6vw,1.6rem);line-height:1.3;background:var(--wwf-white);color:var(--wwf-black);border:4px solid var(--wwf-black)}
+.mt-worked{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:var(--cds-gap-md)}
+.mt-worked>div{border:2px solid var(--wwf-blue);padding:var(--cds-pad-md);background:var(--wwf-blue-10);display:grid;gap:.3rem}
+.mt-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));gap:var(--cds-gap-sm)}
+.mt-res{border-top:6px solid var(--wwf-green);padding:.5rem 0;display:grid;gap:.1rem}
+.mt-res span{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60)}
+.mt-res b{font-family:var(--font-wwf);font-weight:400;font-size:2rem;color:var(--wwf-green)}
+.mt-res em{font-style:normal;font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-blue)}
+.mt-bars{display:grid;gap:.45rem;border:2px solid var(--wwf-blue);background:var(--wwf-blue-10);padding:var(--cds-pad-md) var(--cds-pad-lg)}
+.mt-bar{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr max-content;gap:.6rem;align-items:center;font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption)}
+.mt-bar i{display:block;height:16px}
+.mt-sheets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:var(--cds-gap-sm)}
+.mt-sheet{border-left:8px solid var(--c);background:var(--wwf-grey-08);padding:.6rem .8rem;display:grid;gap:.2rem}
+.mt-sheet b{font-family:var(--font-wwf);font-weight:400;text-transform:uppercase;font-size:1.05rem}
+.mt-sheet span{font-family:var(--font-body);font-size:.92rem;line-height:1.5}
+.mt-quote{font-family:var(--font-body);font-style:italic;font-size:1.05rem;line-height:1.6;border-left:8px solid var(--wwf-green);padding:.4rem 0 .4rem 1rem;max-width:80ch}
+.mt-limits{margin:0;padding-left:1.2rem;display:grid;gap:.45rem;max-width:80ch}
+.mt-limits li::marker{color:var(--wwf-red)}
+.mt-res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:var(--cds-gap-lg)}
+.mt-links{margin:.4rem 0 0;padding-left:1.1rem;display:grid;gap:.35rem}
+.mt-links li{font-family:var(--font-anthropic-sans)!important;font-size:.9rem!important}
+.mt-links a{color:var(--wwf-black);text-decoration-color:var(--wwf-orange);text-decoration-thickness:2px;text-underline-offset:3px}
+.mt-open{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);margin-left:auto;color:var(--wwf-black)}
+.mt-guide{width:100%;height:min(85vh,1100px);border:2px solid var(--wwf-black);background:var(--wwf-white)}
+
+/* ---- clickable map: hover highlight and details card ---- */
+.na-map path.site,.na-map path.kba{cursor:pointer}
+.na-map path.lit{stroke:var(--wwf-black)!important;stroke-width:2.2!important;stroke-opacity:1!important}
+.map-card{position:absolute;top:.6rem;right:.6rem;width:min(22rem,calc(100% - 1.2rem));max-height:calc(100% - 1.2rem);overflow:auto;background:var(--wwf-white);border:2px solid var(--wwf-black);z-index:4;font-family:var(--font-anthropic-sans)}
+.map-card .mc-head{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;background:var(--wwf-black);color:var(--wwf-white);padding:.4rem .6rem}
+.map-card .mc-head b{font-family:var(--font-wwf);font-weight:400;text-transform:uppercase;letter-spacing:.02em}
+.map-card .mc-close{font:inherit;font-size:1.3rem;line-height:1;background:none;border:0;color:var(--wwf-white);cursor:pointer;padding:0 .2rem}
+.map-card .mc-list{display:grid}
+.map-card .mc-item{padding:.6rem .7rem;border-bottom:1px solid var(--wwf-grey-20);display:grid;gap:.3rem}
+.map-card h4{margin:0;font-family:var(--font-body);font-size:1rem}
+.map-card dl{display:grid;grid-template-columns:max-content 1fr;gap:.15rem .6rem;margin:0;font-size:var(--cds-font-size-caption)}
+.map-card dt{color:var(--wwf-grey-60)} .map-card dd{margin:0}
+.map-card .mc-note{font-size:var(--cds-font-size-caption);font-family:var(--font-anthropic-sans);color:var(--wwf-green);margin:0}
+.mc-badge{justify-self:start;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--wwf-white);padding:.1rem .4rem}
+.mc-badge.pa{background:var(--wwf-green)} .mc-badge.oecm{background:var(--wwf-orange)} .mc-badge.kba{background:var(--wwf-berry)}
+
+/* ---- OECM opportunities page ---- */
+.oe{--oe-p1:var(--wwf-orange);--oe-p2:var(--wwf-yellow);--oe-p3:var(--wwf-grey-40);--oe-rep:var(--wwf-blue);--oe-cov:var(--wwf-grey-20);--oe-kba:var(--wwf-berry);--oe-pa:var(--wwf-green)}
+.oe-intro{display:grid;gap:var(--cds-gap-sm);border-top:6px solid var(--wwf-black);padding-top:var(--cds-pad-md)}
+.oe-caveat{font-family:var(--font-anthropic-sans)!important;font-size:var(--cds-font-size-caption)!important;background:#fde5cc;border-left:6px solid var(--wwf-orange);padding:.5rem .8rem;max-width:90ch!important}
+.oe-empty{font-family:var(--font-body);border:2px dashed var(--wwf-grey-40);padding:1rem}
+#oe-body{display:grid;gap:var(--cds-gap-lg)}
+#oe-kpis .na-kpi:nth-child(1){border-top-color:var(--wwf-green)} #oe-kpis .na-kpi:nth-child(2){border-top-color:var(--wwf-blue)}
+#oe-kpis .na-kpi:nth-child(2) .v{color:var(--wwf-blue)}
+#oe-kpis .na-kpi:nth-child(3),#oe-kpis .na-kpi:nth-child(4){border-top-color:var(--wwf-orange)} #oe-kpis .na-kpi:nth-child(3) .v,#oe-kpis .na-kpi:nth-child(4) .v{color:var(--wwf-orange)}
+#oe-kpis .na-kpi:nth-child(5){border-top-color:#c9a800} #oe-kpis .na-kpi:nth-child(6){border-top-color:var(--wwf-berry)} #oe-kpis .na-kpi:nth-child(6) .v{color:var(--wwf-berry)}
+.oe-h3{margin-top:var(--cds-gap-md)!important}
+.oe-toolbar{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm) var(--cds-gap-lg);align-items:center;justify-content:space-between}
+.oe-find input{min-width:min(18rem,80vw)}
+.oe-map{min-height:26rem;border:1px solid var(--wwf-grey-20);background:var(--wwf-blue-10)}
+.oe-map svg{cursor:grab}
+.oe-map path.oe-site,.oe-map circle.oe-dot{cursor:pointer}
+.oe-map path.oe-sel{stroke:var(--wwf-black)!important;stroke-width:2.6!important;stroke-opacity:1!important}
+.oe-map path.oe-hl{stroke:var(--wwf-black)!important;stroke-width:1.6!important}
+.oe-map path.oe-kbahl{stroke:var(--wwf-black)!important;stroke-width:2.5!important;stroke-dasharray:none!important}
+.oe-zoom{position:absolute;left:.5rem;top:.5rem;display:grid;gap:2px;z-index:3}
+.oe-zoom button{font:inherit;font-size:1.1rem;line-height:1;width:2rem;height:2rem;background:var(--wwf-white);border:1px solid var(--wwf-black);cursor:pointer}
+.oe-zoom button:hover,.oe-zoom button:focus-visible{background:var(--wwf-black);color:var(--wwf-white);outline:none}
+.oe-scale{position:absolute;left:.6rem;bottom:.5rem;font-family:var(--font-anthropic-sans);font-size:11px;z-index:3;pointer-events:none}
+.oe-scale i{display:block;height:6px;border:1.5px solid var(--wwf-black);border-top:0;margin-bottom:2px}
+.oe-tier{display:inline-block;font-family:var(--font-anthropic-sans);font-size:11px;font-weight:700;letter-spacing:.03em;padding:.1rem .45rem;color:var(--wwf-black);white-space:nowrap}
+.oe-tier.P1{background:var(--oe-p1);color:var(--wwf-white)} .oe-tier.P2{background:var(--oe-p2)} .oe-tier.P3{background:var(--wwf-grey-20)}
+.oe-tier.REPORT{background:var(--oe-rep);color:var(--wwf-white)} .oe-tier.COVERED,.oe-tier.SMALL{background:var(--wwf-white);border:1px solid var(--wwf-grey-40);color:var(--wwf-grey-60)}
+.oe-tablebox{max-height:32rem} .oe-tablebox.short{max-height:22rem}
+.oe-tablebox tr.oe-cur td{background:var(--wwf-green-25)}
+.oe-meas{font-size:11px;color:var(--wwf-grey-60)}
+/* profile */
+.oe-profile{border-top:8px solid var(--wwf-black)!important;gap:var(--cds-gap-md)!important}
+.oe-ph{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:flex-start;justify-content:space-between}
+.oe-ph-l{display:grid;gap:.35rem;min-width:0;flex:1}
+.oe-ph h2{font-size:clamp(1.6rem,3.4vw,2.4rem)!important;line-height:1}
+.oe-rank{font-family:var(--font-wwf);font-size:1.1rem;background:var(--wwf-black);color:var(--wwf-white);padding:.1rem .45rem;margin-right:.4rem}
+.oe-sub{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60)}
+.oe-nav{display:flex;gap:4px;flex-wrap:wrap}
+.oe-nav button{font:inherit;font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);background:var(--wwf-white);border:1px solid var(--wwf-black);padding:.3rem .6rem;cursor:pointer}
+.oe-nav button:hover,.oe-nav button:focus-visible{background:var(--wwf-black);color:var(--wwf-white);outline:none}
+.oe-headline{font-family:var(--font-body);font-size:1.05rem;border-left:6px solid var(--oe-p1);padding-left:.7rem;max-width:none!important}
+.oe-pgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:var(--cds-gap-lg);align-items:start}
+@media (max-width:860px){.oe-pgrid{grid-template-columns:1fr}}
+.oe-pmap{position:relative;border:1px solid var(--wwf-grey-20);background:var(--wwf-blue-10);min-height:18rem}
+.oe-pmap svg{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+.oe-pmap .land{stroke:var(--cds-chart-axis);stroke-width:.8;vector-effect:non-scaling-stroke}
+.oe-pmap path{vector-effect:non-scaling-stroke}
+.oe-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr));gap:var(--cds-gap-sm)}
+.oe-fig{border-top:4px solid var(--wwf-black);padding-top:.3rem;display:grid;gap:.1rem}
+.oe-fig b{font-family:var(--font-wwf);font-weight:400;font-size:1.6rem;line-height:1}
+.oe-fig span{font-family:var(--font-anthropic-sans);font-size:11.5px;color:var(--wwf-grey-60)}
+.oe-sec{display:grid;gap:.4rem}
+.oe-sec h3{font-family:var(--font-wwf)!important;font-weight:400!important;text-transform:uppercase;font-size:1.15rem!important;border-left:6px solid var(--c,var(--wwf-black));padding-left:.5rem;margin:0}
+.oe-list{margin:0;padding-left:1.15rem;display:grid;gap:.3rem;font-family:var(--font-body);line-height:1.5}
+.oe-list.caps li::marker{color:var(--wwf-red)} .oe-list.why li::marker{color:var(--wwf-green)}
+.oe-crit{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:var(--cds-gap-sm)}
+.oe-c{border:1px solid var(--wwf-grey-20);border-top:5px solid var(--st,var(--wwf-grey-40));padding:.55rem .7rem;display:grid;gap:.3rem;align-content:start}
+.oe-c header{display:flex;justify-content:space-between;gap:.5rem;align-items:baseline}
+.oe-c header b{font-family:var(--font-wwf);font-weight:400;text-transform:uppercase;font-size:1rem}
+.oe-c p{font-family:var(--font-body);font-size:.92rem;line-height:1.5;margin:0;max-width:none}
+.oe-st{font-family:var(--font-anthropic-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:.05rem .4rem;color:var(--wwf-white);background:var(--st,var(--wwf-grey-40));white-space:nowrap}
+.oe-scores{display:grid;gap:.3rem}
+.oe-srow{display:grid;grid-template-columns:8.5rem 1fr 3rem;gap:.5rem;align-items:center;font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption)}
+.oe-srow .t{height:10px;background:var(--wwf-grey-08);position:relative}
+.oe-srow .t i{position:absolute;inset:0 auto 0 0;background:var(--c,var(--wwf-black))}
+.oe-srow span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.oe-lc{display:flex;height:16px;width:100%;overflow:hidden;border:1px solid var(--wwf-grey-20)}
+.oe-lc i{display:block;height:100%}
+.oe-lcl{display:flex;flex-wrap:wrap;gap:.2rem .7rem;font-family:var(--font-anthropic-sans);font-size:11.5px;color:var(--wwf-grey-60)}
+.oe-lcl span{display:inline-flex;gap:.25rem;align-items:center} .oe-lcl i{width:.7rem;height:.7rem;display:inline-block}
+.oe-kbabox{border:2px solid var(--wwf-berry);padding:.6rem .8rem;display:grid;gap:.35rem;background:#f6eef8}
+.oe-kbabox h4{margin:0;font-family:var(--font-body);font-size:1rem}
+.oe-kbabox p{font-family:var(--font-body);font-size:.9rem;line-height:1.5;margin:0;max-width:none}
+.oe-kbabox .k{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-80)}
+.oe-spp{display:flex;flex-wrap:wrap;gap:.25rem}
+.oe-spp span{font-family:var(--font-anthropic-sans);font-size:11px;padding:.05rem .35rem;border:1px solid var(--wwf-grey-40);font-style:italic}
+.oe-spp span.CR{border-color:var(--wwf-red);color:var(--wwf-red)} .oe-spp span.EN{border-color:var(--wwf-orange);color:#b35c00} .oe-spp span.VU{border-color:#c9a800;color:#7a6600}
+.oe-mt{border-collapse:collapse;width:100%;font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption)}
+.oe-mt th{background:var(--wwf-grey-08)!important;color:var(--wwf-black);text-align:left;padding:.3rem .5rem;position:static}
+.oe-mt td{border-bottom:1px solid var(--wwf-grey-20);padding:.3rem .5rem;vertical-align:top}
+.oe-note{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60)}
+.oe-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:var(--cds-gap-md);align-items:start}
+/* categories */
+.oe-cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:var(--cds-gap-md)}
+.oe-cat{border-top:6px solid var(--c);background:var(--wwf-grey-08);padding:.7rem .85rem;display:grid;gap:.4rem;align-content:start}
+.oe-cat h3{font-family:var(--font-wwf)!important;font-weight:400!important;text-transform:uppercase;font-size:1.15rem!important;color:var(--wwf-black)}
+.oe-cat p{font-family:var(--font-body);font-size:.9rem;line-height:1.5;margin:0}
+.oe-cat .bar{display:flex;height:12px;width:100%;background:var(--wwf-white)}
+.oe-cat .bar i{display:block;height:100%}
+.oe-cat .n{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-80)}
+.oe-mk{cursor:pointer}
+.oe-mk-n{font-family:var(--font-anthropic-sans);font-size:11px;font-weight:700;fill:var(--wwf-white)}
+.oe-mk-P2 .oe-dot{fill-opacity:.95}
+.oe-mk-sel .oe-dot{stroke-width:3!important}
+.oe-p1list{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.oe-p1l{font-family:var(--font-anthropic-sans);font-size:var(--cds-font-size-caption);color:var(--wwf-grey-60);margin-right:.2rem}
+.oe-p1list .na-chip{display:inline-flex;align-items:center;gap:.35rem}
+.oe-p1n{display:inline-grid;place-items:center;min-width:1.25rem;height:1.25rem;border-radius:50%;color:var(--wwf-white);font-family:var(--font-anthropic-sans);font-size:11px;font-weight:700}
+.na-legend .oe-p1n{width:1.1rem;height:1.1rem;min-width:1.1rem;font-size:10px}
+/* method */
+.oe-method{display:grid;gap:var(--cds-gap-md)}
+.oe-method p,.oe-method li{font-family:var(--font-body);line-height:1.6}
+.oe-method ol,.oe-method ul{margin:0;padding-left:1.3rem;display:grid;gap:.35rem;max-width:90ch}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="dash.js?v=3"></script>
+</head>
+<body>
+<div id="dash-root">
+
+
+<div class="na" id="na">
+  <header class="wwf-head" id="top">
+    <div class="wwf-titlebox">
+      <p class="wwf-kicker">Tunisia · OECM opportunities · Target 3</p>
+      <h1>Tunisia 30×30: OECMs</h1>
+      <p class="wwf-sub">Protected areas, OECMs and Key Biodiversity Areas in Tunisia, Algeria, Morocco, Libya and Egypt</p>
+    </div>
+    <img class="wwf-logo" src="img/wwf_logo.jpg" alt="WWF">
+  </header>
+  <p class="takeaway" id="takeaway" data-source="region"></p>
+
+  <nav class="na-tabs" role="tablist" aria-label="Dashboard pages">
+    <button role="tab" id="tab-oecm" data-tab="oecm" aria-selected="true">OECM opportunities</button>
+    <button role="tab" id="tab-country" data-tab="country" aria-selected="false">Tunisia today</button>
+    <button role="tab" id="tab-overview" data-tab="overview" aria-selected="false">North Africa</button>
+    <button role="tab" id="tab-compare" data-tab="compare" aria-selected="false">Compare</button>
+    <button role="tab" id="tab-report" data-tab="report" aria-selected="false">Report</button>
+    <button role="tab" id="tab-methodology" data-tab="methodology" aria-selected="false">Methodology</button>
+  </nav>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="na-page" id="overview" data-page="overview">
+    <div class="na-kpis">
+      <div class="na-kpi"><span class="l">Region land covered, PAs + OECMs</span><span class="v" data-source="region" data-field="land_pct" data-row="0">—</span><span class="l">Indicator 3.1, five countries pooled</span></div>
+      <div class="na-kpi"><span class="l">Of which protected areas</span><span class="v" data-source="region" data-field="pa_pct" data-row="0">—</span><span class="l">Land, OECMs excluded</span></div>
+      <div class="na-kpi"><span class="l">Of which OECMs</span><span class="v" data-source="region" data-field="oecm_pct" data-row="0">—</span><span class="l">Algeria and Morocco only</span></div>
+      <div class="na-kpi"><span class="l">Region sea covered</span><span class="v" data-source="region" data-field="sea_pct" data-row="0">—</span><span class="l">Marine and coastal realm</span></div>
+      <div class="na-kpi"><span class="l">Sea still needed for 30%</span><span class="v" data-source="region" data-field="sea_needed_km2" data-row="0">—</span><span class="l">km², five countries pooled</span></div>
+      <div class="na-kpi"><span class="l">Average KBA coverage</span><span class="v" data-source="region" data-field="kba_mean_pct" data-row="0">—</span><span class="l">Mean % of each KBA covered</span></div>
+    </div>
+
+    <div class="na-grid">
+      <div class="na-card" id="card-regionmap">
+        <h2>Coverage by country</h2>
+        <p class="muted">Click a country to open its page. Shade shows the measure picked below.</p>
+        <div class="na-controls" id="metric-chips" role="group" aria-label="Map measure"></div>
+        <div class="na-map" id="regionmap" data-source="geo countries"></div>
+        <div class="na-legend" id="regionlegend"></div>
+      </div>
+      <div class="na-card" id="card-landbars">
+        <h2>Land and sea coverage against 30%</h2>
+        <p class="muted">Protected areas and OECMs (PA area removed), percent of each realm. Dashed line: 30% target.</p>
+        <div class="na-chart" id="landbars" data-source="countries"></div>
+        <div class="na-legend"><span><i id="lg-pa"></i>Protected areas</span><span><i id="lg-oe"></i>OECMs</span><span><i id="lg-sea"></i>Sea, PAs + OECMs</span></div>
+      </div>
+    </div>
+
+    <div class="na-card wide" id="card-countrytable">
+      <h2>Country comparison</h2>
+      <p class="muted">Click a row to open the country. Coverage after removing overlaps, Mollweide equal-area, WDPA/WD-OECM October 2026.</p>
+      <div class="na-tablebox">
+        <table id="countrytable" data-source="countries" data-row-key="iso3">
+          <thead><tr>
+            <th data-field="iso3"><button data-k="iso3">Code</button></th>
+            <th data-field="country"><button data-k="country">Country</button></th>
+            <th class="n" data-field="land_pct"><button data-k="land_pct">Land %</button></th>
+            <th class="n" data-field="land_pa_pct"><button data-k="land_pa_pct">PA only %</button></th>
+            <th class="n" data-field="land_oecm_pct"><button data-k="land_oecm_pct">OECM %</button></th>
+            <th class="n" data-field="sea_pct"><button data-k="sea_pct">Sea %</button></th>
+            <th class="n" data-field="land_needed_km2"><button data-k="land_needed_km2">Land needed km²</button></th>
+            <th class="n" data-field="sea_needed_km2"><button data-k="sea_needed_km2">Sea needed km²</button></th>
+            <th class="n" data-field="kba_mean_pct"><button data-k="kba_mean_pct">KBA mean %</button></th>
+            <th class="n" data-field="pp_land_pct"><button data-k="pp_land_pct">Protected Planet land %</button></th>
+            <th class="n" data-field="pp_sea_pct"><button data-k="pp_sea_pct">Protected Planet sea %</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="na-card wide" id="card-regionstory">
+      <h2>What the numbers say</h2>
+      <div class="na-report" id="regionstory" data-source="narratives"></div>
+    </div>
+  </section>
+
+  <!-- ===================== COUNTRY ===================== -->
+  <section class="na-page" id="country" data-page="country" hidden>
+    <div class="na-controls" id="country-chips" role="group" aria-label="Country"></div>
+    <div class="na-kpis" id="country-kpis">
+      <div class="na-kpi"><span class="l">Land covered, PAs + OECMs</span><span class="v ck" data-source="countries" data-field="land_pct">—</span><span class="l ckl" data-source="countries" data-field="land_km2"></span></div>
+      <div class="na-kpi"><span class="l">Protected areas, land</span><span class="v ck" data-source="countries" data-field="land_pa_pct">—</span><span class="l">percent of land</span></div>
+      <div class="na-kpi"><span class="l">OECMs, land</span><span class="v ck" data-source="countries" data-field="land_oecm_pct">—</span><span class="l">PA area removed</span></div>
+      <div class="na-kpi"><span class="l">Sea covered</span><span class="v ck" data-source="countries" data-field="sea_pct">—</span><span class="l ckl" data-source="countries" data-field="sea_km2"></span></div>
+      <div class="na-kpi"><span class="l">Land still needed for 30%</span><span class="v ck" data-source="countries" data-field="land_needed_km2">—</span><span class="l">km²</span></div>
+      <div class="na-kpi"><span class="l">Sea still needed for 30%</span><span class="v ck" data-source="countries" data-field="sea_needed_km2">—</span><span class="l">km²</span></div>
+      <div class="na-kpi"><span class="l">Average KBA coverage</span><span class="v ck" data-source="countries" data-field="kba_mean_pct">—</span><span class="l ckl" data-source="countries" data-field="kba_count"></span></div>
+      <div class="na-kpi"><span class="l">Lakes and wetlands covered</span><span class="v ck" data-source="countries" data-field="wetlands_pct">—</span><span class="l">GLWD v2</span></div>
+    </div>
+
+    <div class="na-grid">
+      <div class="na-card" id="card-countrymap">
+        <h2 id="countrymap-title">Map</h2>
+        <p class="muted">Scroll or pinch to zoom, drag to pan. Hover or click any protected area, OECM or KBA for its details.</p>
+        <div class="na-controls" id="layer-chips" role="group" aria-label="Map layers"></div>
+        <div class="na-map" id="countrymap" data-source="geo kbas"></div>
+        <div class="na-legend" id="countrylegend"></div>
+      </div>
+      <div class="na-card" id="card-facts">
+        <h2>Report</h2>
+        <dl class="na-facts" id="facts" data-source="countries"></dl>
+        <div class="na-report" id="countrystory" data-source="narratives"></div>
+      </div>
+    </div>
+
+    <div class="na-grid">
+      <div class="na-card" id="card-ts">
+        <h2>Coverage over time</h2>
+        <p class="muted">Cumulative coverage by designation year, from net (flattened) site areas. Steps hold until the next designation.</p>
+        <div class="na-chart" id="tschart" data-source="timeseries"></div>
+        <div class="na-legend" id="tslegend"></div>
+      </div>
+      <div class="na-card" id="card-eco">
+        <h2>Ecoregions</h2>
+        <p class="muted">Share of each ecoregion covered by PAs and OECMs. Dashed line: 30%.</p>
+        <div class="na-controls" id="realm-chips" role="group" aria-label="Realm"></div>
+        <div class="na-chart" id="ecochart" data-source="ecoregions"></div>
+      </div>
+      <div class="na-card" id="card-wet">
+        <h2>Lakes and wetlands</h2>
+        <p class="muted">GLWD v2 wetland groups on land, share inside PAs and OECMs.</p>
+        <div class="na-chart" id="wetchart" data-source="wetlands"></div>
+      </div>
+      <div class="na-card" id="card-gov">
+        <h2>Governance and effectiveness</h2>
+        <p class="muted">Share of covered land by IUCN governance type and by management-effectiveness evaluation (valid for 5 years).</p>
+        <div class="na-chart" id="govchart" data-source="governance effectiveness"></div>
+      </div>
+    </div>
+
+    <div class="na-card wide" id="card-kbatable">
+      <h2>Key Biodiversity Areas</h2>
+      <div class="na-controls">
+        <div class="na-controls" id="kba-chips" role="group" aria-label="KBA group"></div>
+        <input type="search" id="kba-search" placeholder="Search KBAs" aria-label="Search KBAs">
+      </div>
+      <p class="muted" id="kba-count"></p>
+      <div class="na-tablebox">
+        <table id="kbatable" data-source="kbas" data-row-key="sitrecid">
+          <thead><tr>
+            <th data-field="sitrecid"><button data-k="sitrecid">SitRecID</button></th>
+            <th data-field="kba"><button data-k="kba">KBA</button></th>
+            <th class="n" data-field="area_km2"><button data-k="area_km2">Area km²</button></th>
+            <th class="n" data-field="covered_pct"><button data-k="covered_pct">Covered %</button></th>
+            <th class="n" data-field="pa_only_pct"><button data-k="pa_only_pct">PA only %</button></th>
+            <th data-field="coverage_class"><button data-k="coverage_class">Class</button></th>
+            <th data-field="marine"><button data-k="marine">Marine</button></th>
+            <th data-field="freshwater"><button data-k="freshwater">Freshwater</button></th>
+            <th data-field="mountain"><button data-k="mountain">Mountain</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="na-card wide" id="card-sitetable">
+      <h2>Site register</h2>
+      <div class="na-controls">
+        <div class="na-controls" id="site-chips" role="group" aria-label="Site filter"></div>
+        <input type="search" id="site-search" placeholder="Search sites" aria-label="Search sites">
+      </div>
+      <p class="muted" id="site-count"></p>
+      <div class="na-tablebox">
+        <table id="sitetable" data-source="sites" data-row-key="site_id">
+          <thead><tr>
+            <th data-field="site_id"><button data-k="site_id">Site ID</button></th>
+            <th data-field="site"><button data-k="site">Name</button></th>
+            <th data-field="designation"><button data-k="designation">Designation</button></th>
+            <th data-field="site_type"><button data-k="site_type">Type</button></th>
+            <th class="n" data-field="year"><button data-k="year">Year</button></th>
+            <th data-field="counted"><button data-k="counted">Counted</button></th>
+            <th class="n" data-field="net_land_km2"><button data-k="net_land_km2">Net land km²</button></th>
+            <th class="n" data-field="net_sea_km2"><button data-k="net_sea_km2">Net sea km²</button></th>
+            <th data-field="governance"><button data-k="governance">Governance</button></th>
+            <th class="n" data-field="effectiveness_year"><button data-k="effectiveness_year">Last evaluation</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OECM OPPORTUNITIES ===================== -->
+  <section class="na-page oe" id="oecm" data-page="oecm" hidden>
+    <div class="oe-intro">
+      <p class="mt-eyebrow">OECM opportunities · site-level screening</p>
+      <h2 class="mt-h1" id="oe-title">Tunisia: which sites could become OECMs?</h2>
+      <p class="mt-lede">Other effective area-based conservation measures (OECMs, CBD Decision 14/8) count towards Target 3 alongside protected areas.
+        The OECM Harvester mapped <b id="oe-n-cand">…</b> candidate sites with a boundary (its shapefiles) in eight categories: fisheries closures, military areas, hunting reserves,
+        dam reservoirs, oases, sacred sites, archaeological and cultural sites. This page screens every one of them. It measures what each would add
+        outside the protected areas already counted, and what it would cover in the Key Biodiversity Areas. It then argues site by site against the
+        four OECM criteria.</p>
+      <p class="oe-caveat">Screening, not recognition. Priorities come from a transparent but provisional rubric meant to open the discussion with the
+        administrations. Recognising an OECM needs the consent of the governing authority and a full assessment against the CBD criteria.</p>
+      <div class="na-controls" id="oe-country-chips" role="group" aria-label="Country"></div>
+    </div>
+    <p class="oe-empty" id="oe-empty" hidden>No OECM screening for this country yet: run the OECM Harvester and <code>06_oecm</code> scripts for it first.</p>
+
+    <div id="oe-body">
+      <div class="na-kpis" id="oe-kpis"></div>
+
+      <div class="na-grid">
+        <div class="na-card" id="card-oe-recs">
+          <h2 id="oe-recs-title">What the country could do</h2>
+          <div class="na-report" id="oe-recs"></div>
+        </div>
+        <div class="na-card" id="card-oe-bars">
+          <h2>What OECMs could add to indicator 3.1</h2>
+          <p class="muted">Coverage counted today, then what each priority would add (overlaps removed, net of counted protected areas). Dashed line: 30%.</p>
+          <div class="na-chart" id="oe-bars"></div>
+          <div class="na-legend" id="oe-bars-legend"></div>
+          <h3 class="oe-h3">From candidates to priorities</h3>
+          <div class="na-chart" id="oe-funnel"></div>
+        </div>
+      </div>
+
+      <div class="na-card wide" id="card-oe-map">
+        <h2 id="oe-map-title">Candidate sites by priority</h2>
+        <p class="muted">Choose what to show: one priority view (first row) and one category (second row); "All categories" shows them all again. Numbered circles mark the priority-1 sites (their rank), small dots the priority-2 sites. Most sites are small (a dam is a few km²), so click a marker, a site or a name in the list under the map: the map zooms to it and its full profile opens below. Scroll or pinch to zoom, drag to pan.</p>
+        <div class="oe-toolbar">
+          <div class="na-controls" id="oe-tier-chips" role="radiogroup" aria-label="Priorities shown"></div>
+          <div class="na-controls" id="oe-layer-chips" role="group" aria-label="Map layers"></div>
+        </div>
+        <div class="oe-toolbar">
+          <div class="na-controls" id="oe-cat-chips" role="radiogroup" aria-label="Category shown"></div>
+          <div class="oe-find"><input type="search" id="oe-find" list="oe-find-list" placeholder="Find a site or KBA" aria-label="Find a site or KBA"><datalist id="oe-find-list"></datalist></div>
+        </div>
+        <div class="na-map oe-map" id="oe-map">
+          <div class="oe-zoom" role="group" aria-label="Zoom">
+            <button type="button" data-z="in" aria-label="Zoom in">+</button><button type="button" data-z="out" aria-label="Zoom out">−</button><button type="button" data-z="reset" aria-label="Show the whole country">⌂</button>
+          </div>
+          <div class="oe-scale" id="oe-scale"></div>
+        </div>
+        <div class="na-legend" id="oe-legend"></div>
+        <div class="oe-p1list" id="oe-p1list"></div>
+      </div>
+
+      <div class="na-card wide oe-profile" id="oe-profile" aria-live="polite"></div>
+
+      <div class="na-card wide" id="card-oe-table">
+        <h2>Priority list</h2>
+        <p class="muted">One row per site complex: candidates of the same place (a dam, its Water Code belts and the hunting reserve on it; fragments of one oasis) are assessed together. Click a row for its profile.</p>
+        <div class="oe-toolbar">
+          <div class="na-controls" id="oe-ttier-chips" role="group" aria-label="Priority"></div>
+          <input type="search" id="oe-tsearch" placeholder="Search name, governorate, KBA" aria-label="Search the priority list">
+        </div>
+        <p class="muted" id="oe-tcount"></p>
+        <div class="na-tablebox oe-tablebox">
+          <table id="oe-table">
+            <thead><tr>
+              <th class="n" data-field="rank"><button data-k="rank">#</button></th>
+              <th data-field="tier"><button data-k="tier_o">Priority</button></th>
+              <th data-field="name"><button data-k="name">Site complex</button></th>
+              <th data-field="measures"><button data-k="measures_s">Measures</button></th>
+              <th data-field="governorate"><button data-k="governorate">Governorate</button></th>
+              <th class="n" data-field="net_ha"><button data-k="net_ha">Net ha</button></th>
+              <th class="n" data-field="pp"><button data-k="pp">+ points</button></th>
+              <th class="n" data-field="kba_ha"><button data-k="kba_ha">In KBAs ha</button></th>
+              <th data-field="kba_names"><button data-k="kba_s">KBAs</button></th>
+              <th class="n" data-field="natural"><button data-k="natural">Natural</button></th>
+              <th class="n" data-field="score"><button data-k="score">Score</button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="na-card wide" id="card-oe-kbas">
+        <h2>What the candidates could cover in Key Biodiversity Areas</h2>
+        <p class="muted">Each bar is one KBA (largest gaps first): green is covered by counted protected areas today; then what priority 1, 2 and 3 complexes would add in the uncovered part; berry is what no candidate reaches.</p>
+        <div class="na-controls" id="oe-kba-chips" role="group" aria-label="KBAs shown"></div>
+        <div class="na-chart" id="oe-kbachart"></div>
+        <div class="na-legend" id="oe-kba-legend"></div>
+        <p class="muted" id="oe-kcount"></p>
+        <div class="na-tablebox oe-tablebox">
+          <table id="oe-kbatable">
+            <thead><tr>
+              <th data-field="kba"><button data-k="kba">KBA</button></th>
+              <th data-field="kba_class"><button data-k="kba_class">Class</button></th>
+              <th class="n" data-field="area_km2"><button data-k="area_km2">Area km²</button></th>
+              <th class="n" data-field="covered_pct"><button data-k="covered_pct">Covered today</button></th>
+              <th class="n" data-field="gap_km2"><button data-k="gap_km2">Gap km²</button></th>
+              <th class="n" data-field="p1_km2"><button data-k="p1_km2">P1 km²</button></th>
+              <th class="n" data-field="p12_km2"><button data-k="p12_km2">P1+P2 km²</button></th>
+              <th class="n" data-field="all_km2"><button data-k="all_km2">All km²</button></th>
+              <th class="n" data-field="p12_cov_pct"><button data-k="p12_cov_pct">With P1+P2</button></th>
+              <th class="n" data-field="n_threatened"><button data-k="n_threatened">Threatened spp.</button></th>
+              <th data-field="verdict"><button data-k="verdict">Verdict</button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="na-card wide" id="card-oe-cats">
+        <h2>Category by category</h2>
+        <p class="muted">How each kind of measure fares against the OECM criteria, and how many of its sites reach each priority.</p>
+        <div class="oe-cats" id="oe-cats"></div>
+      </div>
+
+      <div class="na-card wide" id="card-oe-gov">
+        <h2>Where: priority complexes by governorate</h2>
+        <p class="muted">Priority 1 and 2 complexes per governorate: the regional commissariats (CRDA) and forest districts to involve first. Click a bar to list them.</p>
+        <div class="na-chart" id="oe-gov"></div>
+      </div>
+
+      <div class="na-card wide" id="card-oe-method">
+        <h2>How the screening works</h2>
+        <div class="oe-method" id="oe-method"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPARE ===================== -->
+  <section class="na-page" id="compare" data-page="compare" hidden>
+    <div class="na-grid">
+      <div class="na-card" id="card-tsall">
+        <h2>Land coverage over time, all countries</h2>
+        <p class="muted">PAs + OECMs, cumulative by designation year.</p>
+        <div class="na-chart" id="tsall" data-source="timeseries"></div>
+      </div>
+      <div class="na-card" id="card-kbagroups">
+        <h2>KBA coverage by group</h2>
+        <p class="muted">Mean % covered: marine (SDG 14.5.1), freshwater and mountain (SDG 15.1.2, 15.4.1).</p>
+        <div class="na-chart" id="kbagroups" data-source="countries"></div>
+      </div>
+      <div class="na-card" id="card-inland">
+        <h2>Inland waters</h2>
+        <p class="muted">Share of river length and of lake and wetland area inside PAs and OECMs.</p>
+        <div class="na-chart" id="inland" data-source="countries"></div>
+      </div>
+      <div class="na-card" id="card-ppcheck">
+        <h2>Cross-check with Protected Planet</h2>
+        <p class="muted">Land coverage, PAs + OECMs: this analysis (filled) against Protected Planet, October 2026 (ring).</p>
+        <div class="na-chart" id="ppcheck" data-source="countries"></div>
+      </div>
+      <div class="na-card" id="card-dataq">
+        <h2>Data quality</h2>
+        <p class="muted">Share of covered land with no governance type reported, and with a current effectiveness evaluation.</p>
+        <div class="na-chart" id="dataq" data-source="countries"></div>
+      </div>
+      <div class="na-card" id="card-ecoall">
+        <h2>Least-covered ecoregions</h2>
+        <p class="muted">Land ecoregions over 5,000 km² in each country, lowest coverage first.</p>
+        <div class="na-chart" id="ecoall" data-source="ecoregions"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REPORT ===================== -->
+  <section class="na-page" id="report" data-page="report" hidden>
+    <div class="na-card wide" id="card-report">
+      <h2>North Africa 30×30 report</h2>
+      <p class="muted">Regional findings, then one section per country. Each country's full illustrated guide is linked at the end of its section.</p>
+      <div class="na-report" id="fullreport" data-source="narratives countries"></div>
+    </div>
+  </section>
+  <!-- ===================== METHODOLOGY ===================== -->
+  <section class="na-page mt" id="methodology" data-page="methodology" hidden>
+
+    <div class="mt-intro">
+      <p class="mt-eyebrow">Methodology</p>
+      <h2 class="mt-h1">How every number in this dashboard was made</h2>
+      <p class="mt-lede">This page explains, from first principles, how Headline Indicator 3.1 of the Kunming-Montreal Global Biodiversity Framework was calculated for Tunisia, Algeria, Morocco, Libya and Egypt. It assumes no prior knowledge of GIS or of the indicator. Each step says what to do, why, how to do it in small sub-steps, and shows a real example from one of the five countries. At the end you will find the decisions taken for each country, the limits of the method, every source and link used, and the full step-by-step guide for each country.</p>
+      <nav class="mt-toc" aria-label="Methodology contents">
+        <a href="#m-basics">Basics</a><a href="#m-pipeline">Overview</a><a href="#m-s1">1 Scope</a><a href="#m-s2">2 Data</a><a href="#m-s3">3 Filter</a>
+        <a href="#m-s4">4 Points</a><a href="#m-s5">5 Clip &amp; project</a><a href="#m-s6">6 Flatten</a><a href="#m-s7">7 OECMs</a><a href="#m-s8">8 Net areas</a>
+        <a href="#m-s9">9 Indicator</a><a href="#m-s10">10 Breakdowns</a><a href="#m-s11">11 Excel tool</a><a href="#m-s12">12 Checks</a><a href="#m-s13">13 Report</a>
+        <a href="#m-countries">Country decisions</a><a href="#m-limits">Limits</a><a href="#m-resources">Resources</a><a href="#m-guides">Country guides</a>
+      </nav>
+    </div>
+
+    <!-- ---------- BASICS ---------- -->
+    <section class="mt-block" id="m-basics">
+      <h3 class="mt-h2"><span class="mt-num">0</span>The basics in plain words</h3>
+      <div class="mt-two">
+        <div>
+          <p><b>Target 3</b> of the Global Biodiversity Framework, agreed by 196 countries in December 2022, asks that by 2030 <b>at least 30% of land and inland waters and 30% of coastal and marine areas</b> are effectively conserved through protected areas and other effective area-based conservation measures (OECMs), especially areas important for biodiversity, ecologically representative, well connected and equitably governed. This is the "30×30" target.</p>
+          <p><b>Headline Indicator 3.1</b> is the official way to measure progress: the share of a country's land, and separately of its sea, that lies inside protected areas or OECMs, counting every square kilometre only once.</p>
+        </div>
+        <figure class="mt-fig">
+          <svg viewBox="0 0 420 210" role="img" aria-label="Indicator 3.1 is covered area divided by total area, for land and sea separately">
+            <rect x="10" y="20" width="190" height="150" fill="var(--wwf-map-light)"/>
+            <rect x="10" y="20" width="57" height="150" fill="var(--wwf-green)"/>
+            <text x="105" y="190" text-anchor="middle" class="mt-svgt">Land</text>
+            <text x="38" y="100" text-anchor="middle" class="mt-svgw">30%</text>
+            <rect x="220" y="20" width="190" height="150" fill="var(--wwf-blue-10)"/>
+            <rect x="220" y="20" width="57" height="150" fill="var(--wwf-blue)"/>
+            <text x="315" y="190" text-anchor="middle" class="mt-svgt">Sea</text>
+            <text x="248" y="100" text-anchor="middle" class="mt-svgw">30%</text>
+            <text x="210" y="12" text-anchor="middle" class="mt-svgs">Two separate targets: 30% of land, 30% of sea</text>
+          </svg>
+        </figure>
+      </div>
+      <h4 class="mt-h3">Glossary</h4>
+      <dl class="mt-gloss">
+        <dt>Protected area (PA)</dt><dd>A clearly defined space, recognised and managed by law or other effective means, for the long-term conservation of nature (IUCN definition). National parks, nature reserves and Ramsar wetlands are examples.</dd>
+        <dt>OECM</dt><dd>"Other effective area-based conservation measure": an area that is not a protected area but is governed and managed in ways that achieve lasting positive outcomes for biodiversity (CBD decision 14/8). Algeria's Cultural Parks and Morocco's permanent hunting reserves are reported as OECMs.</dd>
+        <dt>WDPA and WD-OECM</dt><dd>The World Database on Protected Areas and the World Database on OECMs, kept by UNEP-WCMC with IUCN and published monthly on Protected Planet. Each record is one designation of one site.</dd>
+        <dt>KBA</dt><dd>Key Biodiversity Area: a site that contributes significantly to the global persistence of biodiversity, identified with the IUCN Global Standard. KBAs are not protection; they show where protection matters most.</dd>
+        <dt>EEZ</dt><dd>Exclusive Economic Zone: the sea area up to 200 nautical miles from the coast where a country has sovereign rights. It is the denominator for the marine realm.</dd>
+        <dt>Realm</dt><dd>Land (terrestrial and inland waters) or sea (marine and coastal). The indicator is always reported per realm.</dd>
+        <dt>Flattening (dissolving)</dt><dd>Merging overlapping shapes into one layer so that ground covered by two or more designations is counted once.</dd>
+        <dt>Mollweide projection</dt><dd>A way to draw the round Earth on a flat map that keeps areas true. Measuring in it gives correct km² anywhere on the globe.</dd>
+        <dt>Buffer</dt><dd>A shape drawn around a point at a chosen distance. Here, a circle whose area equals the area a site reports.</dd>
+        <dt>GIS</dt><dd>Geographic Information System: software that stores and analyses maps, such as QGIS (free) or Python with geopandas (used here).</dd>
+        <dt>Net area</dt><dd>The part of a site's area not already counted under an earlier site. Net areas add up exactly to the flattened total.</dd>
+        <dt>GD-PAME</dt><dd>The Global Database on Protected Area Management Effectiveness: a record of evaluations (METT, RAPPAM, IMET and others) made at each site.</dd>
+      </dl>
+    </section>
+
+    <!-- ---------- PIPELINE ---------- -->
+    <section class="mt-block" id="m-pipeline">
+      <h3 class="mt-h2"><span class="mt-num">→</span>The whole method on one page</h3>
+      <p>Thirteen steps take raw downloads to a reported number. Steps 1 to 9 produce the headline indicator; step 10 adds the breakdowns the official metadata asks for; steps 11 to 13 put everything in the Excel tool, check it and write it up.</p>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 1000 300" role="img" aria-label="Flow chart of the thirteen steps">
+          <g class="mt-flow">
+            <g transform="translate(0,20)"><rect width="140" height="70" fill="var(--wwf-black)"/><text x="70" y="30" class="mt-fw">1 SCOPE</text><text x="70" y="50" class="mt-fs">land, sea, borders</text></g>
+            <g transform="translate(165,20)"><rect width="140" height="70" fill="var(--wwf-black)"/><text x="70" y="30" class="mt-fw">2 DATA</text><text x="70" y="50" class="mt-fs">WDPA, KBA, layers</text></g>
+            <g transform="translate(330,20)"><rect width="140" height="70" fill="var(--wwf-grey-60)"/><text x="70" y="30" class="mt-fw">3 FILTER</text><text x="70" y="50" class="mt-fs">drop proposed, MAB</text></g>
+            <g transform="translate(495,20)"><rect width="140" height="70" fill="var(--wwf-grey-60)"/><text x="70" y="30" class="mt-fw">4 POINTS</text><text x="70" y="50" class="mt-fs">circles of reported area</text></g>
+            <g transform="translate(660,20)"><rect width="140" height="70" fill="var(--wwf-blue)"/><text x="70" y="30" class="mt-fw">5 CLIP</text><text x="70" y="50" class="mt-fs">land / sea, Mollweide</text></g>
+            <g transform="translate(825,20)"><rect width="140" height="70" fill="var(--wwf-green)"/><text x="70" y="30" class="mt-fw">6 FLATTEN</text><text x="70" y="50" class="mt-fs">PAs counted once</text></g>
+            <g transform="translate(825,130)"><rect width="140" height="70" fill="var(--wwf-orange)"/><text x="70" y="30" class="mt-fw">7 OECMs</text><text x="70" y="50" class="mt-fs">erase PA area</text></g>
+            <g transform="translate(660,130)"><rect width="140" height="70" fill="var(--wwf-olive)"/><text x="70" y="30" class="mt-fw">8 NET AREAS</text><text x="70" y="50" class="mt-fs">earliest site first</text></g>
+            <g transform="translate(495,130)"><rect width="140" height="70" fill="var(--wwf-green)"/><text x="70" y="30" class="mt-fw">9 INDICATOR</text><text x="70" y="50" class="mt-fs">covered ÷ total</text></g>
+            <g transform="translate(330,130)"><rect width="140" height="70" fill="var(--wwf-berry)"/><text x="70" y="30" class="mt-fw">10 BREAKDOWNS</text><text x="70" y="50" class="mt-fs">KBA, ecosystems…</text></g>
+            <g transform="translate(165,130)"><rect width="140" height="70" fill="var(--wwf-aqua)"/><text x="70" y="30" class="mt-fw">11 EXCEL</text><text x="70" y="50" class="mt-fs">fill the tool</text></g>
+            <g transform="translate(0,130)"><rect width="140" height="70" fill="var(--wwf-red)"/><text x="70" y="30" class="mt-fw">12 CHECKS</text><text x="70" y="50" class="mt-fs">QC, reconcile</text></g>
+            <g transform="translate(0,230)"><rect width="965" height="50" fill="var(--wwf-black)"/><text x="482" y="31" class="mt-fw">13 REPORT · national report, dashboard, guides</text></g>
+          </g>
+          <g stroke="var(--wwf-black)" stroke-width="2" fill="none" marker-end="url(#mt-arrow)">
+            <path d="M140 55h22"/><path d="M305 55h22"/><path d="M470 55h22"/><path d="M635 55h22"/><path d="M800 55h22"/>
+            <path d="M895 90v37"/><path d="M825 165h-22"/><path d="M660 165h-22"/><path d="M495 165h-22"/><path d="M330 165h-22"/><path d="M165 165h-22"/><path d="M70 200v27"/>
+          </g>
+          <defs><marker id="mt-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--wwf-black)"/></marker></defs>
+        </svg>
+      </figure>
+      <div class="mt-callout mt-c-green"><b>Tools used.</b> Everything was scripted in Python (geopandas, shapely, pyproj, rasterio, openpyxl) so it can be re-run when the WDPA updates each month. The same steps can be done by hand in QGIS; the sub-steps below give both routes where they differ. The Excel workbook was recalculated in Microsoft Excel with zero formula errors for every country.</div>
+    </section>
+
+    <!-- ---------- STEP 1 ---------- -->
+    <section class="mt-block" id="m-s1">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-black)">1</span>Define the scope: what counts as the country's land and sea</h3>
+      <p class="mt-why"><b>Why.</b> The indicator is a ratio. The bottom of the ratio (the denominator) is the country's land area or sea area. If two people use different boundaries, they get different percentages from the same protected areas. Fixing the base map first is the single most important decision for comparability.</p>
+      <ol class="mt-sub">
+        <li><b>Choose a land boundary.</b> We used the open geoBoundaries "ADM0" outline (national borders) for every country. A national official boundary is equally valid if it is documented.</li>
+        <li><b>Choose a sea boundary.</b> We used the Marine Regions EEZ version 12 (Flanders Marine Institute), the reference used by Protected Planet. Keep only the country's own 200-nautical-mile zone; set aside "overlapping claim" zones.</li>
+        <li><b>Decide on disputed territories</b> and write the decision down. Match the convention of the global database unless national practice requires otherwise, and report the alternative.</li>
+        <li><b>Fill inland holes.</b> Some outlines cut lakes out of the land. Inland waters belong to the land realm ("terrestrial and inland waters"), so fill these holes.</li>
+        <li><b>Close coastal gaps.</b> Lagoons and inlets can fall between the land outline and the inner edge of the EEZ and belong to neither. Close small gaps (we used 5 km) and add the pieces that touch the sea to the marine realm.</li>
+        <li><b>Measure both areas in an equal-area projection</b> (step 5) and write them into the Setup sheet of the Excel tool.</li>
+      </ol>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 900 230" role="img" aria-label="Coastal gap between land outline and EEZ is added to the sea; inland lake hole is filled into land">
+          <rect x="0" y="0" width="900" height="230" fill="var(--wwf-white)"/>
+          <path d="M40 200 L40 40 L250 40 C300 60 300 110 270 130 C250 145 260 190 300 200 Z" fill="var(--wwf-map-light)" stroke="var(--wwf-grey-60)"/>
+          <ellipse cx="130" cy="110" rx="35" ry="20" fill="var(--wwf-white)" stroke="var(--wwf-grey-60)" stroke-dasharray="4 3"/>
+          <path d="M300 40 L440 40 L440 200 L300 200 C260 190 250 145 270 130 C300 110 300 60 250 40 Z" fill="var(--wwf-blue-10)"/>
+          <path d="M276 120 C290 105 292 80 283 62 L300 62 C306 85 300 110 290 125 Z" fill="var(--wwf-white)" stroke="var(--wwf-red)" stroke-dasharray="4 3"/>
+          <text x="130" y="114" text-anchor="middle" class="mt-svgs">lake hole</text>
+          <text x="150" y="30" text-anchor="middle" class="mt-svgt">Before</text>
+          <text x="372" y="125" text-anchor="middle" class="mt-svgs">EEZ</text>
+          <text x="296" y="225" text-anchor="middle" class="mt-svgs" fill="var(--wwf-red)">gap: in neither realm</text>
+          <path d="M490 200 L490 40 L700 40 C750 60 750 110 720 130 C700 145 710 190 750 200 Z" fill="var(--wwf-map-light)" stroke="var(--wwf-grey-60)"/>
+          <ellipse cx="580" cy="110" rx="35" ry="20" fill="var(--wwf-green-25)" stroke="var(--wwf-green)"/>
+          <path d="M750 40 L890 40 L890 200 L750 200 C710 190 700 145 720 130 C750 110 750 60 700 40 Z" fill="var(--wwf-blue-10)"/>
+          <path d="M726 120 C740 105 742 80 733 62 L750 62 C756 85 750 110 740 125 Z" fill="var(--wwf-blue-50)" stroke="var(--wwf-blue)"/>
+          <text x="580" y="114" text-anchor="middle" class="mt-svgs">filled into land</text>
+          <text x="600" y="30" text-anchor="middle" class="mt-svgt">After</text>
+          <text x="822" y="125" text-anchor="middle" class="mt-svgs">sea</text>
+          <text x="746" y="225" text-anchor="middle" class="mt-svgs" fill="var(--wwf-blue)">gap added to sea</text>
+        </svg>
+        <figcaption>Step 1 in a picture: lake holes go to the land realm, coastal gaps to the sea.</figcaption>
+      </figure>
+      <div class="mt-example"><p class="mt-ex-h">Example · Tunisia's coastal lagoons</p>
+        <p>Lac de Tunis, Halk El Menzel and the Kneiss flats sit between the land outline and the EEZ. Before the fix, 40 km² of protected lagoon was counted nowhere. Closing the gaps added 113 km² to the marine realm and raised Tunisia's sea coverage from 1.04% to 1.07%. Filling lake holes added 11 km² to the land.</p></div>
+      <div class="mt-example"><p class="mt-ex-h">Example · disputed territories</p>
+        <p><b>Morocco:</b> geoBoundaries includes Western Sahara (685,174 km²); Protected Planet and the Marine Regions EEZ do not. We cut the land at the 27°40′N border (415,235 km², within 0.3% of Protected Planet's 414,105 km²). Including it would lower land coverage from 33.7% to about 20%. <b>Egypt:</b> the Halaib Triangle, claimed by Egypt and Sudan, was taken as the overlap of the two countries' geoBoundaries outlines (18,042 km²) and removed; with it, coverage is 12.81% instead of 11.24%.</p></div>
+      <div class="mt-pitfall"><b>Common mistake.</b> Taking the land area from one source (a statistics yearbook) and the protected areas from another map. Use one base map for every area in the workbook.</div>
+    </section>
+
+    <!-- ---------- STEP 2 ---------- -->
+    <section class="mt-block" id="m-s2">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-black)">2</span>Collect the data</h3>
+      <p class="mt-why"><b>Why.</b> The headline needs only protected areas, OECMs and the base map. The breakdowns need KBAs, ecosystem maps, inland waters and management-effectiveness records. Recording the exact version of each dataset makes the result reproducible.</p>
+      <div class="mt-sources">
+        <div class="mt-src" style="--c:var(--wwf-green)"><p class="mt-src-h">Protected areas &amp; OECMs</p><p>WDPA and WD-OECM, October 2026 release. Downloaded per country from the UNEP-WCMC map service behind Protected Planet (query <code>iso3='TUN'</code>, polygons and points layers, in pages of 10–25 records to stay under size limits).</p></div>
+        <div class="mt-src" style="--c:var(--wwf-blue)"><p class="mt-src-h">Base map</p><p>geoBoundaries ADM0 (land); Marine Regions EEZ v12 via its WFS service (sea).</p></div>
+        <div class="mt-src" style="--c:var(--wwf-berry)"><p class="mt-src-h">Key Biodiversity Areas</p><p>World Database of KBAs, September 2026 global file (polygons, points, trigger species; licensed, request from the KBA Secretariat), plus each site's public factsheet.</p></div>
+        <div class="mt-src" style="--c:var(--wwf-olive)"><p class="mt-src-h">Ecosystems</p><p>RESOLVE Ecoregions 2017 (land); Marine Ecoregions of the World (sea); GMBA Mountain Inventory v2.0 (mountains).</p></div>
+        <div class="mt-src" style="--c:var(--wwf-aqua)"><p class="mt-src-h">Inland waters</p><p>HydroRIVERS v1.0 (river lines); Global Lakes and Wetlands Database v2 (33 wetland classes, 500 m grid).</p></div>
+        <div class="mt-src" style="--c:var(--wwf-orange)"><p class="mt-src-h">Effectiveness &amp; national</p><p>GD-PAME evaluations read from each site page on Protected Planet; national reports to the CBD and NBSAPs for reconciliation.</p></div>
+      </div>
+      <ol class="mt-sub">
+        <li><b>Download the WDPA for the country.</b> On protectedplanet.net search the country, then "Download" (shapefile or GeoPackage). Or query the map service as we did. Keep polygons and points: both count.</li>
+        <li><b>Download the WD-OECM</b> the same way. Many countries have none (Tunisia, Libya, Egypt); Algeria has 5 and Morocco 338.</li>
+        <li><b>Note the release month</b> (here October 2026) in Setup row 7. The WDPA changes every month.</li>
+        <li><b>Learn the key fields.</b> SITE_ID (unique number), NAME, DESIG_ENG (designation), DESIG_TYPE (national, regional, international), IUCN_CAT, STATUS (Designated, Proposed…), STATUS_YR (year), GOV_TYPE (governance), REALM (Terrestrial, Coastal, Marine), REP_AREA (reported km²), GIS_AREA (computed km²).</li>
+        <li><b>Request the KBA data</b> from the KBA Secretariat if you need boundaries; without them you can still use the factsheet coverage values.</li>
+        <li><b>Download the ecosystem and water layers once</b> (global files, about 2 GB in total) and cut them to each country.</li>
+        <li><b>Read each site page</b> on Protected Planet for its effectiveness evaluations (tool and year).</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example · what the WDPA holds</p>
+        <table class="mt-table"><thead><tr><th>Country</th><th>PA polygons</th><th>PA points</th><th>OECMs</th><th>Total records</th></tr></thead><tbody>
+          <tr><td>Tunisia</td><td>137</td><td>12</td><td>0</td><td>149</td></tr>
+          <tr><td>Algeria</td><td>71</td><td>2</td><td>5</td><td>78</td></tr>
+          <tr><td>Morocco</td><td>91</td><td>0</td><td>338</td><td>429</td></tr>
+          <tr><td>Libya</td><td>0</td><td>5</td><td>0</td><td>5</td></tr>
+          <tr><td>Egypt</td><td>47</td><td>3</td><td>0</td><td>50</td></tr>
+        </tbody></table></div>
+    </section>
+
+    <!-- ---------- STEP 3 ---------- -->
+    <section class="mt-block" id="m-s3">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-grey-60)">3</span>Filter the records</h3>
+      <p class="mt-why"><b>Why.</b> Not every record should count. The official method (metadata steps 1–2) excludes sites that are not yet in force and designations whose zones are not managed for conservation.</p>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 900 200" role="img" aria-label="Decision tree for including a record">
+          <g class="mt-tree">
+            <rect x="10" y="70" width="150" height="60" fill="var(--wwf-black)"/><text x="85" y="97" class="mt-fw">Each record</text><text x="85" y="115" class="mt-fs">PA or OECM</text>
+            <rect x="200" y="70" width="170" height="60" fill="var(--wwf-white)" stroke="var(--wwf-black)"/><text x="285" y="97" class="mt-ft">STATUS Proposed or</text><text x="285" y="115" class="mt-ft">Not Reported?</text>
+            <rect x="410" y="70" width="170" height="60" fill="var(--wwf-white)" stroke="var(--wwf-black)"/><text x="495" y="97" class="mt-ft">UNESCO-MAB</text><text x="495" y="115" class="mt-ft">Biosphere Reserve?</text>
+            <rect x="620" y="70" width="140" height="60" fill="var(--wwf-white)" stroke="var(--wwf-black)"/><text x="690" y="97" class="mt-ft">Point without</text><text x="690" y="115" class="mt-ft">reported area?</text>
+            <rect x="790" y="70" width="100" height="60" fill="var(--wwf-green)"/><text x="840" y="105" class="mt-fw">COUNT</text>
+            <rect x="215" y="155" width="140" height="35" fill="var(--wwf-red)"/><text x="285" y="177" class="mt-fw">EXCLUDE</text>
+            <rect x="425" y="155" width="140" height="35" fill="var(--wwf-red)"/><text x="495" y="177" class="mt-fw">EXCLUDE</text>
+            <rect x="620" y="155" width="140" height="35" fill="var(--wwf-red)"/><text x="690" y="177" class="mt-fw">EXCLUDE</text>
+          </g>
+          <g stroke="var(--wwf-black)" stroke-width="2" fill="none" marker-end="url(#mt-arrow)">
+            <path d="M160 100h37"/><path d="M370 100h37"/><path d="M580 100h37"/><path d="M760 100h27"/>
+            <path d="M285 130v22"/><path d="M495 130v22"/><path d="M690 130v22"/>
+          </g>
+          <g class="mt-svgs"><text x="388" y="92">no</text><text x="598" y="92">no</text><text x="770" y="92">no</text><text x="292" y="147">yes</text><text x="502" y="147">yes</text><text x="697" y="147">yes</text></g>
+        </svg>
+      </figure>
+      <ol class="mt-sub">
+        <li><b>Remove records whose STATUS is "Proposed" or "Not Reported".</b> Keep Designated, Inscribed, Adopted and Established.</li>
+        <li><b>Remove UNESCO-MAB Biosphere Reserves.</b> Their buffer and transition zones include farmland and towns; their cores are usually already protected under a national designation and counted there.</li>
+        <li><b>Remove points that have no reported area</b>: a point with 0 km² cannot be turned into a circle.</li>
+        <li><b>Keep the excluded rows in the register</b> with the reason, so the exclusion is visible and auditable. The Excel tool does this automatically.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example · records excluded</p>
+        <p><b>Tunisia</b>: 10 excluded (7 proposed points, including Jenein-oued Ouni, 3,600 km²; 3 biosphere reserves). <b>Algeria</b>: 8 biosphere reserves. <b>Morocco</b>: 45 (42 proposed, among them seven new natural parks and five marine protected areas; 3 biosphere reserves). <b>Egypt</b>: 15 (13 large areas proposed since 1999, 56,941 km², including the Qattara Depression; 2 biosphere reserves). <b>Libya</b>: none.</p></div>
+      <div class="mt-pitfall"><b>Common mistake.</b> Counting a biosphere reserve and the national park inside it. The park is counted once; the reserve is excluded.</div>
+    </section>
+
+    <!-- ---------- STEP 4 ---------- -->
+    <section class="mt-block" id="m-s4">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-grey-60)">4</span>Turn points into circles</h3>
+      <p class="mt-why"><b>Why.</b> Some sites are recorded only as a point with a reported area. To measure overlaps and split land from sea, the method draws a circle of that area around the point (metadata step 3).</p>
+      <div class="mt-two">
+        <figure class="mt-fig">
+          <svg viewBox="0 0 400 240" role="img" aria-label="A point becomes a circle with radius square root of area over pi">
+            <rect x="0" y="0" width="200" height="240" fill="var(--wwf-map-light)"/><rect x="200" y="0" width="200" height="240" fill="var(--wwf-blue-10)"/>
+            <path d="M200 0 L200 240" stroke="var(--wwf-grey-60)"/>
+            <circle cx="190" cy="120" r="80" fill="var(--wwf-green)" fill-opacity=".35" stroke="var(--wwf-green)" stroke-width="2"/>
+            <path d="M200 40 A80 80 0 0 1 200 200 Z" fill="var(--wwf-blue)" fill-opacity=".45"/>
+            <circle cx="190" cy="120" r="4" fill="var(--wwf-black)"/><path d="M190 120 L270 120" stroke="var(--wwf-black)" stroke-dasharray="4 3"/>
+            <text x="230" y="113" text-anchor="middle" class="mt-svgs">r = √(A/π)</text>
+            <text x="90" y="225" text-anchor="middle" class="mt-svgt">land part</text><text x="310" y="225" text-anchor="middle" class="mt-svgt">sea part</text>
+          </svg>
+        </figure>
+        <div>
+          <ol class="mt-sub">
+            <li><b>Take the reported area</b> A (REP_AREA, in km²).</li>
+            <li><b>Compute the radius</b>: r = √(A ÷ π). The Excel register shows it in column AI.</li>
+            <li><b>Draw the circle</b> in an equal-area projection (step 5), so its area is exactly A.</li>
+            <li><b>Flag the site</b> as approximate: a circle cannot follow a coastline or a valley.</li>
+          </ol>
+          <div class="mt-formula">r = √(4,000 ÷ 3.1416) = <b>35.7 km</b></div>
+        </div>
+      </div>
+      <div class="mt-example"><p class="mt-ex-h">Example · Libya, where every site is a point</p>
+        <p>Libya's five WDPA sites are all points. El Nagaza National Park reports 4,000 km² and is recorded as marine; its circle of 35.7 km radius around 32.67°N 14.28°E falls 1,759 km² on land and 2,241 km² at sea. That one circle gives 84% of Libya's land figure and all of its sea figure. In Tunisia, the coastal point Hamada-Sidi Toui (120 km²) spills 42 km² into the sea although the record says "terrestrial".</p></div>
+    </section>
+
+    <!-- ---------- STEP 5 ---------- -->
+    <section class="mt-block" id="m-s5">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-blue)">5</span>Clip to land and sea, and measure in an equal-area projection</h3>
+      <p class="mt-why"><b>Why.</b> A site may straddle the coast: its land part counts toward the land target and its sea part toward the sea target. Areas must be measured in a projection that keeps areas true, otherwise northern sites look bigger than southern ones (metadata steps 5–6).</p>
+      <ol class="mt-sub">
+        <li><b>Repair geometries.</b> Some source shapes are invalid (self-crossing lines). Run "Fix geometries" in QGIS or <code>make_valid</code> in Python. Egypt's EEZ polygon needed this.</li>
+        <li><b>Reproject everything to Mollweide</b> (code <code>ESRI:54009</code>). In QGIS: right-click layer → Export → Save Features As → CRS ESRI:54009.</li>
+        <li><b>Intersect each site with the land polygon</b> to get its land part, and with the sea polygon to get its sea part.</li>
+        <li><b>Keep only polygon pieces.</b> Overlays sometimes leave lines or points; drop them.</li>
+        <li><b>Measure each part in km²</b> (area in m² ÷ 1,000,000).</li>
+      </ol>
+      <div class="mt-callout mt-c-blue"><b>Why not latitude–longitude?</b> In degrees, a 1°×1° square covers about 12,400 km² at the equator but only about 9,800 km² at 38°N (northern Tunisia). Measuring in degrees would overstate areas in the north by about a quarter. Mollweide removes that bias.</div>
+    </section>
+
+    <!-- ---------- STEP 6 ---------- -->
+    <section class="mt-block" id="m-s6">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-green)">6</span>Flatten the protected areas so each km² counts once</h3>
+      <p class="mt-why"><b>Why.</b> One place is often listed several times: as a national park, a Ramsar wetland and a World Heritage site. Adding the records counts the same ground two, three or five times. The method dissolves all protected areas into one flat layer before measuring (metadata step 4).</p>
+      <div class="mt-two">
+        <figure class="mt-fig">
+          <svg viewBox="0 0 420 220" role="img" aria-label="Three overlapping circles become one flat shape">
+            <circle cx="80" cy="100" r="55" fill="var(--wwf-green)" fill-opacity=".35" stroke="var(--wwf-green)"/>
+            <circle cx="125" cy="100" r="55" fill="var(--wwf-blue)" fill-opacity=".35" stroke="var(--wwf-blue)"/>
+            <circle cx="102" cy="140" r="45" fill="var(--wwf-orange)" fill-opacity=".35" stroke="var(--wwf-orange)"/>
+            <text x="102" y="205" text-anchor="middle" class="mt-svgt">3 records: 9,600 + 9,600 + 6,400</text>
+            <path d="M200 110h30" stroke="var(--wwf-black)" stroke-width="2" marker-end="url(#mt-arrow)"/>
+            <path d="M275 100 m-55 0 a55 55 0 1 0 0 1 Z" fill="none"/>
+            <g transform="translate(220,0)"><path d="M25 100 A55 55 0 0 1 102 52 A55 55 0 0 1 180 100 A55 55 0 0 1 140 152 A45 45 0 0 1 64 152 A55 55 0 0 1 25 100 Z" fill="var(--wwf-green)" stroke="var(--wwf-green)"/></g>
+            <text x="322" y="205" text-anchor="middle" class="mt-svgt">1 flat layer, counted once</text>
+          </svg>
+        </figure>
+        <div>
+          <ol class="mt-sub">
+            <li><b>Put all counted protected areas in one layer</b> (polygons plus the circles from step 4), separately for land parts and sea parts.</li>
+            <li><b>Dissolve</b> them into one shape per realm. QGIS: Vector → Geoprocessing → Dissolve (no field). Python: <code>unary_union</code>.</li>
+            <li><b>Measure the dissolved shape.</b> This is the protected area for the indicator.</li>
+            <li><b>Compare with the sum of the records</b>; the difference is the double counting removed.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="mt-bars" role="img" aria-label="Gross versus flattened area in Tunisia">
+        <p class="mt-ex-h">Example · Tunisia, land</p>
+        <div class="mt-bar"><span>Sum of 139 records</span><i style="width:100%;background:var(--wwf-orange)"></i><b>19,103 km²</b></div>
+        <div class="mt-bar"><span>After flattening</span><i style="width:64.6%;background:var(--wwf-green)"></i><b>12,345 km²</b></div>
+        <p>Chott Jrid is listed as a 1949 national wetland zone and a 2007 Ramsar site, each about 5,000 km². Ichkeul appears five times. Flattening removes more than a third of the summed area; 69 pairs of records overlap.</p>
+      </div>
+    </section>
+
+    <!-- ---------- STEP 7 ---------- -->
+    <section class="mt-block" id="m-s7">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-orange)">7</span>Add the OECMs, after removing protected area from them</h3>
+      <p class="mt-why"><b>Why.</b> Where an OECM overlaps a protected area, that ground is already counted as protected. The method erases all protected-area ground from the OECM layer first, then dissolves what is left (metadata OECM step 4). This also lets you report the PA and OECM shares separately.</p>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 900 200" role="img" aria-label="OECM minus protected area equals OECM counted">
+          <rect x="20" y="30" width="220" height="130" fill="var(--wwf-orange)" fill-opacity=".8"/><text x="130" y="185" text-anchor="middle" class="mt-svgt">OECM as reported</text>
+          <text x="275" y="100" text-anchor="middle" class="mt-big">−</text>
+          <rect x="310" y="30" width="220" height="130" fill="none" stroke="var(--wwf-grey-40)" stroke-dasharray="4 3"/><rect x="380" y="60" width="100" height="70" fill="var(--wwf-green)"/><text x="420" y="185" text-anchor="middle" class="mt-svgt">protected area inside it</text>
+          <text x="565" y="100" text-anchor="middle" class="mt-big">=</text>
+          <path d="M600 30h220v130h-220Z M670 60v70h100v-70Z" fill="var(--wwf-orange)" fill-opacity=".8" fill-rule="evenodd"/><text x="710" y="185" text-anchor="middle" class="mt-svgt">OECM counted</text>
+        </svg>
+      </figure>
+      <ol class="mt-sub">
+        <li><b>Clip the OECMs to land and sea</b> as in step 5.</li>
+        <li><b>Erase</b> the flattened protected-area layer from them. QGIS: Vector → Geoprocessing → Difference.</li>
+        <li><b>Dissolve</b> the remaining OECM pieces.</li>
+        <li><b>Measure</b>; this is the OECM contribution. Total coverage = flattened PA area + PA-erased OECM area.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example · Algeria's Cultural Parks</p>
+        <p>The five Cultural Parks sum to 1,233,094 km². The Tassili n'Ajjer World Heritage Site, a protected area, overlaps the Tassili Cultural Park on 75,470 km². After erasing all protected area, the OECMs add 1,151,696 km² (49.67% of land) to the protected areas' 107,764 km² (4.65%), for 54.32% in total, close to Protected Planet's 54.41%.</p></div>
+      <div class="mt-callout mt-c-orange"><b>Check before you count an OECM.</b> CBD decision 14/8 sets criteria: a defined area, effective governance and management, and sustained positive outcomes for biodiversity. The indicator counts what a country reports, but the report should explain the evidence. In Morocco, 221 hunting reserves supply 29.7 points of the land figure and none has an effectiveness evaluation.</div>
+    </section>
+
+    <!-- ---------- STEP 8 ---------- -->
+    <section class="mt-block" id="m-s8">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-olive)">8</span>Give each site its net area</h3>
+      <p class="mt-why"><b>Why.</b> The flat layer has no site names. To fill the register, draw a time series and break coverage down by governance or effectiveness, each piece of ground must belong to exactly one site. The rule used: protected areas before OECMs, then the earliest designation keeps the overlap; ties go to the larger site.</p>
+      <ol class="mt-sub">
+        <li><b>Sort sites</b>: PAs first, then OECMs; within each, by designation year (unknown years last), then by size.</li>
+        <li><b>Walk down the list</b>: each site's net area is its area minus everything already covered by the sites above it.</li>
+        <li><b>Add the site to the "already covered" shape</b> and continue.</li>
+        <li><b>Check</b> that the net areas add up exactly to the flattened totals.</li>
+        <li><b>Move site attributes when needed.</b> If an evaluation or governance type sits on a record that lost its area to another record of the same physical site, move it to the record that holds the area and note it.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example · the same wetland twice, and a stranded evaluation</p>
+        <p>Chott Jrid's 1949 wetland zone keeps 4,998 km²; the 2007 Ramsar record keeps 0. In Tunisia, Ichkeul's 2025 World Heritage Outlook sat on the World Heritage record, which keeps 0.5 km²; it was moved to Ichkeul National Park, which holds 168.6 km². Without the move, the only current evaluation in Tunisia would have counted for almost nothing.</p></div>
+    </section>
+
+    <!-- ---------- STEP 9 ---------- -->
+    <section class="mt-block" id="m-s9">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-green)">9</span>Compute the indicator</h3>
+      <div class="mt-formula mt-formula-big">Indicator 3.1 (land) = <span style="color:var(--wwf-green)">flattened PA area</span> + <span style="color:var(--wwf-orange)">PA-erased OECM area</span> ÷ <span>land area</span> × 100</div>
+      <p>The same formula is applied to the sea with the sea parts and the marine area. The gap to the target is 30% minus the result, and the extra area needed is the gap times the realm area.</p>
+      <div class="mt-worked">
+        <div><p class="mt-ex-h">Worked example · Egypt</p>
+          <p>Land: 110,805 km² ÷ 986,014 km² = <b>11.24%</b>. Gap: 18.76 points × 986,014 km² ÷ 100 = <b>184,999 km²</b> more needed.<br>Sea: 8,821 km² ÷ 243,974 km² = <b>3.62%</b>; 64,371 km² more needed.</p></div>
+        <div><p class="mt-ex-h">Regional figure</p>
+          <p>For the five countries together, covered areas and total areas are summed first, then divided: 1,524,625 km² ÷ 5,505,680 km² = <b>27.69%</b> of land. This is not the average of the five percentages, which would give large and small countries the same weight.</p></div>
+      </div>
+      <div class="mt-results">
+        <div class="mt-res"><span>Tunisia</span><b>7.93%</b><em>sea 1.07%</em></div>
+        <div class="mt-res"><span>Algeria</span><b>54.32%</b><em>sea 0.07%</em></div>
+        <div class="mt-res"><span>Morocco</span><b>33.70%</b><em>sea 0.33%</em></div>
+        <div class="mt-res"><span>Libya</span><b>0.13%</b><em>sea 0.63%</em></div>
+        <div class="mt-res"><span>Egypt</span><b>11.24%</b><em>sea 3.62%</em></div>
+      </div>
+    </section>
+
+    <!-- ---------- STEP 10 ---------- -->
+    <section class="mt-block" id="m-s10">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-berry)">10</span>Break the figure down</h3>
+      <p class="mt-why"><b>Why.</b> Target 3 is not only about quantity. The metadata asks whether the covered area includes the places that matter (KBAs), represents all ecosystems, is equitably governed and effectively managed, and how it has grown. Each breakdown re-uses the flat layers from steps 6 and 7.</p>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-berry)">10a · Key Biodiversity Areas</h4>
+      <ol class="mt-sub">
+        <li><b>Overlay each KBA polygon</b> with the flat PA layer and the PA-erased OECM layer; measure the covered area.</li>
+        <li><b>Coverage % = covered area ÷ KBA area</b>. A KBA at 98% or more is "complete" (allowing for mapping error), above 0 "partial", otherwise "none".</li>
+        <li><b>Assign realms</b>: marine if at least 5% of the KBA lies outside land (metadata rule); terrestrial if at least 5% on land; mountain if at least 5% inside the GMBA mountain inventory; freshwater if its factsheet lists a freshwater system, it is a dam, river, lake, spring or marsh, or a trigger species is a freshwater fish, amphibian or dragonfly.</li>
+        <li><b>KBA points with a reported area</b> are turned into circles like WDPA points; points with no area are listed but not measured.</li>
+        <li><b>Average across KBAs</b> for the headline breakdown (mean % covered), and per group for SDG 14.5.1 (marine), 15.1.2 (terrestrial, freshwater) and 15.4.1 (mountain).</li>
+        <li><b>Set aside foreign KBAs</b> that only touch the border, and KBAs in excluded territories.</li>
+      </ol>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 900 90" role="img" aria-label="KBA coverage classes">
+          <rect x="0" y="20" width="225" height="40" fill="var(--wwf-red)"/><text x="112" y="45" class="mt-fw">0% · NONE</text>
+          <rect x="225" y="20" width="225" height="40" fill="var(--wwf-yellow)"/><text x="337" y="45" class="mt-ft">under 50% · PARTIAL</text>
+          <rect x="450" y="20" width="225" height="40" fill="var(--wwf-medium-green)"/><text x="562" y="45" class="mt-ft">50–98% · PARTIAL</text>
+          <rect x="675" y="20" width="225" height="40" fill="var(--wwf-green)"/><text x="787" y="45" class="mt-fw">≥98% · COMPLETE</text>
+          <text x="450" y="80" text-anchor="middle" class="mt-svgs">Colours used for KBAs on the dashboard maps and tables</text>
+        </svg>
+      </figure>
+      <div class="mt-example"><p class="mt-ex-h">Example · checking against the KBA database</p>
+        <p>The KBA database publishes a protected-area coverage for each KBA. Our protected-area-only results match it for every KBA in Algeria and for 70 of 72 in Tunisia, which confirms the flat layer. Differences arise in three known cases: the KBA database does not count OECMs (Algeria's Ahaggar KBA: 0.8% in the database, 100% with the Cultural Park), and it does not buffer point sites (Egypt's Lake Bardawil: 19.6% in the database, 51.6% here; all of Libya's KBAs are 0% in the database).</p></div>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-olive)">10b · Ecosystems (representativeness)</h4>
+      <ol class="mt-sub">
+        <li><b>Cut the ecoregion maps</b> to the land and sea realms.</li>
+        <li><b>For each ecoregion, measure its extent and its overlap</b> with the PA and OECM layers.</li>
+        <li><b>Group ecoregions into IUCN Global Ecosystem Typology biomes</b> with a crosswalk (for example Mediterranean woodlands → T3 shrublands; Saharan deserts → T5 deserts). Record the crosswalk; it is approximate.</li>
+        <li><b>Report the share of each ecoregion and biome covered</b>, and how many reach 30%.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example</p><p>Across the region, the Mediterranean woodlands and forests are about 12% covered and the Nile Delta under 1%, while Saharan ecoregions inside Algeria's Cultural Parks reach 45–100%.</p></div>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-aqua)">10c · Inland waters</h4>
+      <ol class="mt-sub">
+        <li><b>Rivers</b>: measure the length of HydroRIVERS lines inside the PA and OECM layers, divided by total length.</li>
+        <li><b>Lakes and wetlands</b>: GLWD v2 gives, for each 500 m cell, the area of each of 33 wetland classes. For each cell, compute the fraction inside the protected layers by splitting it into 10 × 10 sub-cells, then multiply by the class area and add up.</li>
+        <li><b>Count</b> classes 1–3, 6 and 8–32 (lakes, reservoirs, lacustrine, riverine, palustrine, ephemeral, peat and coastal wetlands, salt pans). Leave out river channels (4, 5, 7), already counted as length, and rice paddies (33).</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example</p><p>In Tunisia, 46.8% of lake and wetland area is protected, but this is mostly salt pans (63%); marshes are 1% and river floodplains 5% covered. Always look at the breakdown by wetland type, not only the total.</p></div>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-orange)">10d · Governance</h4>
+      <ol class="mt-sub">
+        <li><b>Read GOV_TYPE</b> for each counted site.</li>
+        <li><b>Group into the four IUCN types</b>: A government; B shared (collaborative, joint, transboundary); C private; D Indigenous peoples and local communities; plus "not reported".</li>
+        <li><b>Sum net areas by type</b> and give the share of covered land and sea. Flag if more than 5% is "not reported".</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example</p><p>Morocco: 88.1% of covered land is shared governance (hunting reserves). Egypt: 47.9% has no governance type, mainly El-Gelf El-Keber National Park; this is fixed in the WDPA, not in the tool.</p></div>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-brown)">10e · Management effectiveness</h4>
+      <figure class="mt-fig mt-wide">
+        <svg viewBox="0 0 900 110" role="img" aria-label="Five-year validity window for evaluations">
+          <path d="M40 60H860" stroke="var(--wwf-black)" stroke-width="2"/>
+          <rect x="640" y="40" width="220" height="40" fill="var(--wwf-green)" fill-opacity=".25"/>
+          <g class="mt-svgs"><text x="40" y="100">2001</text><text x="290" y="100">2011</text><text x="640" y="100" text-anchor="middle">2021</text><text x="860" y="100" text-anchor="end">2026</text></g>
+          <circle cx="40" cy="60" r="7" fill="var(--wwf-orange)"/><circle cx="290" cy="60" r="7" fill="var(--wwf-orange)"/><circle cx="530" cy="60" r="7" fill="var(--wwf-orange)"/><circle cx="830" cy="60" r="7" fill="var(--wwf-green)"/>
+          <text x="750" y="32" text-anchor="middle" class="mt-svgs">valid: last 5 years</text><text x="290" y="32" text-anchor="middle" class="mt-svgs">outdated</text>
+        </svg>
+      </figure>
+      <ol class="mt-sub">
+        <li><b>List each site's GD-PAME evaluations</b> (tool and year) from its Protected Planet page.</li>
+        <li><b>Keep the most recent</b>; it is current if 5 years old or less (a national choice, Setup row 26).</li>
+        <li><b>Class each site</b>: High, Moderate or Low if a score is available; "assessed, no score" if current without a score; "outdated"; or "not assessed".</li>
+        <li><b>Move evaluations</b> from records that lost their area to the record of the same site that holds it (step 8).</li>
+      </ol>
+      <div class="mt-callout mt-c-orange"><b>Provisional.</b> The official method for this breakdown is still being developed. No evaluation in the region carries a score, and only Ichkeul (Tunisia), Tassili n'Ajjer (Algeria) and Wadi Al-Hitan (Egypt) have one from the last five years.</div>
+
+      <h4 class="mt-h3" style="--c:var(--wwf-green)">10f · Time series</h4>
+      <ol class="mt-sub">
+        <li><b>For each year, add up the net areas</b> of sites designated up to that year.</li>
+        <li><b>Sites with no year</b> get an expected value: the method assigns them random years from the country's other sites 1,000 times and takes the median; the tool uses the expected value of that procedure, and also shows the lower bound with dated sites only.</li>
+        <li><b>Read the curve as steps</b>: coverage only changes when a site is designated.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example</p><p>Morocco's land coverage jumps from 4.0% to 33.7% in 2021, the year 221 hunting reserves were reported as OECMs.</p></div>
+    </section>
+
+    <!-- ---------- STEP 11 ---------- -->
+    <section class="mt-block" id="m-s11">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-aqua)">11</span>Fill in the Excel tool</h3>
+      <p class="mt-why"><b>Why.</b> The workbook turns the GIS outputs into the official figures with transparent formulas, quality checks and charts, so anyone can audit the result without GIS software.</p>
+      <div class="mt-sheets">
+        <div class="mt-sheet" style="--c:var(--wwf-black)"><b>Setup</b><span>Country, year, data versions, land and sea areas (step 1), method declarations (flattened? Mollweide? OECMs erased?), thresholds.</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-green)"><b>PA_OECM_Register</b><span>One row per WDPA/WD-OECM record: paste attributes in the yellow columns and the net land and sea areas (step 8) in columns R and S. The tool decides inclusion and flags problems.</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-green)"><b>Headline_3.1</b><span>The indicator per realm, PA and OECM shares, gap and area needed (step 9). Nothing to type.</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-olive)"><b>Ecosystems</b><span>Biome and ecoregion extents and overlaps; rivers and wetlands (step 10b–c).</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-berry)"><b>KBA_Coverage</b><span>One row per KBA: area, ocean fraction, realm flags, PA and OECM covered area (step 10a).</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-orange)"><b>Governance · Mgmt_Effectiveness</b><span>Calculated from the register (step 10d–e).</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-blue)"><b>Time_Series</b><span>Cumulative coverage by year (step 10f).</span></div>
+        <div class="mt-sheet" style="--c:var(--wwf-red)"><b>QC_Checks · Dashboard</b><span>20 automatic checks and the figures for the report.</span></div>
+      </div>
+      <ol class="mt-sub">
+        <li><b>Fill only yellow cells.</b> Grey cells are formulas; blue cells are key results.</li>
+        <li><b>Paste values, not formulas</b>, from the GIS tables.</li>
+        <li><b>Recalculate</b> (Formulas → Calculate Now) and save.</li>
+        <li><b>Open QC_Checks</b> and resolve every warning before reporting.</li>
+      </ol>
+    </section>
+
+    <!-- ---------- STEP 12 ---------- -->
+    <section class="mt-block" id="m-s12">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-red)">12</span>Check and reconcile</h3>
+      <ol class="mt-sub">
+        <li><b>Internal checks</b>: net areas add up to the flattened totals; coverage is below 100%; governance and effectiveness tables add up to the headline; no example data left in the tool.</li>
+        <li><b>Compare with Protected Planet</b>, which computes the same indicator monthly. Differences under about half a point usually come from the base map.</li>
+        <li><b>Compare with the national report</b> and explain differences (national data sets, legal areas, proposed sites, land and sea counted together).</li>
+        <li><b>Run sensitivities</b> for contested choices (disputed territories, OECM status) and report them beside the main figure.</li>
+      </ol>
+      <div class="mt-example"><p class="mt-ex-h">Example · reconciliation table</p>
+        <table class="mt-table"><thead><tr><th>Country</th><th>This analysis, land</th><th>Protected Planet, land</th><th>National figure</th></tr></thead><tbody>
+          <tr><td>Tunisia</td><td>7.93%</td><td>7.91%</td><td>7.86% (7th National Report, 2026)</td></tr>
+          <tr><td>Algeria</td><td>54.32%</td><td>54.41%</td><td>Cultural Parks 43.77% of the territory (7th NR)</td></tr>
+          <tr><td>Morocco</td><td>33.70%</td><td>33.75%</td><td>24.2% in 2025 (7th NR, national data set)</td></tr>
+          <tr><td>Libya</td><td>0.13%</td><td>0.13%</td><td>about 0.16% (NBSAP, 2010 figure)</td></tr>
+          <tr><td>Egypt</td><td>11.24% (12.81% with Halaib)</td><td>13.12%</td><td>14.9% of land and sea (NBSAP)</td></tr>
+        </tbody></table></div>
+    </section>
+
+    <!-- ---------- STEP 13 ---------- -->
+    <section class="mt-block" id="m-s13">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-black)">13</span>Report</h3>
+      <ol class="mt-sub">
+        <li><b>State the headline</b> with its realm, data version and projection.</li>
+        <li><b>Give PA and OECM shares separately</b> when OECMs are reported.</li>
+        <li><b>Add the breakdowns</b>: KBAs, ecosystems, governance, effectiveness.</li>
+        <li><b>State every method choice</b>: base map, disputed areas, thresholds, attribute moves.</li>
+        <li><b>Explain differences</b> with Protected Planet and earlier national figures.</li>
+      </ol>
+      <div class="mt-quote">"In 2026, protected areas covered 12,345 km², or 7.93% of Tunisia's terrestrial and inland water area, and 1,068 km², or 1.07% of its marine and coastal area (Headline Indicator 3.1; WDPA October 2026; Mollweide equal-area). No OECMs have been reported. Reaching 30% would require a further 34,340 km² on land and 28,926 km² at sea."</div>
+    </section>
+
+    <!-- ---------- COUNTRY DECISIONS ---------- -->
+    <section class="mt-block" id="m-countries">
+      <h3 class="mt-h2"><span class="mt-num">◆</span>Decisions taken for each country</h3>
+      <div class="mt-tablebox"><table class="mt-table mt-dec"><thead><tr><th>Country</th><th>Base map</th><th>Exclusions</th><th>OECMs</th><th>Special handling</th></tr></thead><tbody>
+        <tr><td><b>Tunisia</b></td><td>geoBoundaries land; EEZ v12; coastal lagoons (113 km²) added to the sea</td><td>7 proposed points, 3 biosphere reserves</td><td>None reported</td><td>Ichkeul 2025 evaluation and three biosphere-reserve (BREMi) evaluations moved to the national parks</td></tr>
+        <tr><td><b>Algeria</b></td><td>geoBoundaries land; EEZ v12</td><td>8 biosphere reserves</td><td>5 Cultural Parks, 49.67% of land</td><td>Six BREMi evaluations moved to national parks; 2 KBA points without area not measured</td></tr>
+        <tr><td><b>Morocco</b></td><td>Western Sahara excluded (land cut at 27°40′N; Moroccan EEZ only)</td><td>42 proposed sites, 3 biosphere reserves</td><td>221 hunting reserves, 117 SIBEs, 31.56% of land</td><td>6 KBAs in Western Sahara set aside; 3 KBA points buffered; Al Hoceima evaluation moved to the national park</td></tr>
+        <tr><td><b>Libya</b></td><td>geoBoundaries land; Libyan EEZ only (Egypt–Libya overlap not counted)</td><td>None</td><td>None reported</td><td>All 5 sites are points, buffered; national network (41 sites) not in the WDPA</td></tr>
+        <tr><td><b>Egypt</b></td><td>Halaib Triangle excluded from land and sea; sensitivity with it</td><td>13 proposed areas, 2 biosphere reserves</td><td>None reported</td><td>3 KBAs in Halaib set aside; BREMi and Ramsar evaluations moved; Nile Delta grouped with deserts by the biome crosswalk</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <!-- ---------- LIMITS ---------- -->
+    <section class="mt-block" id="m-limits">
+      <h3 class="mt-h2"><span class="mt-num" style="background:var(--wwf-red)">!</span>Limits to keep in mind</h3>
+      <ul class="mt-limits">
+        <li><b>The WDPA lags behind reality.</b> Sites designated nationally but not reported (Libya's 2021 reserves, Morocco's new natural parks still "Proposed") are missing.</li>
+        <li><b>Points are approximations.</b> Circles ignore coastlines and terrain.</li>
+        <li><b>OECM status is self-reported.</b> The indicator counts what countries submit; the evidence of biodiversity outcomes is often thin.</li>
+        <li><b>Coverage is not effectiveness.</b> A line on a map does not prove that nature inside it is conserved.</li>
+        <li><b>Global layers are coarse.</b> GLWD cells are about 500 m; small wetlands are under-represented. The ecoregion-to-biome crosswalk is approximate.</li>
+        <li><b>Marine biomes</b> (shelf versus open ocean) need bathymetry and were not computed.</li>
+        <li><b>Licensed data.</b> KBA boundaries and the WDPA have terms of use; check them before publishing maps or files.</li>
+      </ul>
+    </section>
+
+    <!-- ---------- RESOURCES ---------- -->
+    <section class="mt-block" id="m-resources">
+      <h3 class="mt-h2"><span class="mt-num">↗</span>Resources and links used</h3>
+      <div class="mt-res-grid">
+        <div><h4 class="mt-h3" style="--c:var(--wwf-black)">Framework and method</h4><ul class="mt-links">
+          <li><a href="https://www.gbf-indicators.org/metadata/headline/3-1" target="_blank" rel="noopener">Metadata for Headline Indicator 3.1</a> · GBF Indicators</li>
+          <li><a href="https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-04-en.pdf" target="_blank" rel="noopener">CBD decision 15/4: Kunming-Montreal GBF</a></li>
+          <li><a href="https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-05-en.pdf" target="_blank" rel="noopener">CBD decision 15/5: monitoring framework</a></li>
+          <li><a href="https://www.cbd.int/doc/decisions/cop-16/cop-16-dec-31-en.pdf" target="_blank" rel="noopener">CBD decision 16/31: monitoring framework update</a></li>
+          <li><a href="https://www.cbd.int/doc/decisions/cop-14/cop-14-dec-08-en.pdf" target="_blank" rel="noopener">CBD decision 14/8: protected areas and OECMs</a></li>
+          <li><a href="https://www.protectedplanet.net/en/resources/calculating-protected-area-coverage" target="_blank" rel="noopener">Protected Planet: calculating coverage</a></li>
+          <li><a href="https://unstats.un.org/sdgs/metadata/files/Metadata-14-05-01.pdf" target="_blank" rel="noopener">SDG 14.5.1 metadata</a> · <a href="https://unstats.un.org/sdgs/metadata/files/Metadata-15-01-02.pdf" target="_blank" rel="noopener">SDG 15.1.2 metadata</a></li>
+          <li><a href="https://wdpa.s3.eu-west-1.amazonaws.com/PAME/protectedplanet_draft_monitoring_effectiveness_approach.pdf" target="_blank" rel="noopener">Draft approach for effectiveness disaggregation</a></li>
+        </ul></div>
+        <div><h4 class="mt-h3" style="--c:var(--wwf-green)">Protected areas and OECMs</h4><ul class="mt-links">
+          <li><a href="https://www.protectedplanet.net" target="_blank" rel="noopener">Protected Planet</a> (WDPA, WD-OECM, GD-PAME)</li>
+          <li><a href="https://www.protectedplanet.net/en/resources/wdpa-manual" target="_blank" rel="noopener">WDPA / WDPCA user manual</a></li>
+          <li><a href="https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer" target="_blank" rel="noopener">UNEP-WCMC WDPA map service</a></li>
+          <li><a href="https://portals.iucn.org/library/sites/library/files/documents/PATRS-003-En.pdf" target="_blank" rel="noopener">IUCN guidelines for recognising and reporting OECMs</a></li>
+          <li><a href="https://portals.iucn.org/library/efiles/documents/PAG-020.pdf" target="_blank" rel="noopener">IUCN governance of protected areas</a></li>
+          <li><a href="https://portals.iucn.org/library/efiles/documents/PAPS-016.pdf" target="_blank" rel="noopener">IUCN management categories guidelines</a></li>
+        </ul></div>
+        <div><h4 class="mt-h3" style="--c:var(--wwf-berry)">Biodiversity and ecosystems</h4><ul class="mt-links">
+          <li><a href="https://www.keybiodiversityareas.org" target="_blank" rel="noopener">World Database of KBAs</a> · <a href="https://www.keybiodiversityareas.org/kba-data/request" target="_blank" rel="noopener">data request</a></li>
+          <li><a href="https://portals.iucn.org/library/sites/library/files/documents/2016-048.pdf" target="_blank" rel="noopener">Global Standard for the Identification of KBAs</a></li>
+          <li><a href="https://ecoregions.appspot.com" target="_blank" rel="noopener">RESOLVE Ecoregions 2017</a> (Dinerstein et al. 2017)</li>
+          <li><a href="https://www.marineregions.org" target="_blank" rel="noopener">Marine Regions</a>: EEZ v12 and Marine Ecoregions of the World</li>
+          <li><a href="https://global-ecosystems.org" target="_blank" rel="noopener">IUCN Global Ecosystem Typology</a></li>
+          <li><a href="https://www.earthenv.org/mountains" target="_blank" rel="noopener">GMBA Mountain Inventory v2</a></li>
+        </ul></div>
+        <div><h4 class="mt-h3" style="--c:var(--wwf-aqua)">Inland waters and boundaries</h4><ul class="mt-links">
+          <li><a href="https://www.hydrosheds.org/products/hydrorivers" target="_blank" rel="noopener">HydroRIVERS v1.0</a></li>
+          <li><a href="https://www.hydrosheds.org/products/glwd" target="_blank" rel="noopener">Global Lakes and Wetlands Database v2</a> · <a href="https://doi.org/10.6084/m9.figshare.28519994" target="_blank" rel="noopener">figshare download</a></li>
+          <li><a href="https://www.geoboundaries.org" target="_blank" rel="noopener">geoBoundaries</a> (Runfola et al. 2020)</li>
+        </ul></div>
+        <div><h4 class="mt-h3" style="--c:var(--wwf-orange)">National documents</h4><ul class="mt-links">
+          <li><a href="https://climate-laws.org/document/tunisia-7th-national-report-nr7-2026_67fe" target="_blank" rel="noopener">Tunisia 7th National Report (2026)</a></li>
+          <li><a href="https://climate-laws.org/document/algeria-7th-national-report-nr7-2026_bc88" target="_blank" rel="noopener">Algeria 7th National Report (2026)</a></li>
+          <li><a href="https://climate-laws.org/document/morocco-7th-national-report-nr7-2026_53b6" target="_blank" rel="noopener">Morocco 7th National Report (2026)</a></li>
+          <li><a href="https://cdn.climatepolicyradar.org/navigator/LBY/2025/libya-national-biodiversity-strategy-and-action-plan-nbsap-2025_e7d294ad1aabd0ec486e5734b1b43898.pdf" target="_blank" rel="noopener">Libya NBSAP 2023–2030</a></li>
+          <li><a href="https://climate-laws.org/document/egypt-national-biodiversity-strategy-and-action-plan-nbsap-2025_0f53" target="_blank" rel="noopener">Egypt NBSAP (2025)</a></li>
+          <li><a href="https://www.cbd.int/countries" target="_blank" rel="noopener">CBD country profiles</a></li>
+        </ul></div>
+        <div><h4 class="mt-h3" style="--c:var(--wwf-blue)">Tools</h4><ul class="mt-links">
+          <li><a href="https://qgis.org" target="_blank" rel="noopener">QGIS</a>, free desktop GIS</li>
+          <li><a href="https://geopandas.org" target="_blank" rel="noopener">geopandas</a> and <a href="https://shapely.readthedocs.io" target="_blank" rel="noopener">shapely</a> (Python)</li>
+          <li><a href="https://prioritizr.github.io/wdpar/" target="_blank" rel="noopener">wdpar</a>, R package to download and clean the WDPA</li>
+          <li><a href="https://rasterio.readthedocs.io" target="_blank" rel="noopener">rasterio</a> for the GLWD grids</li>
+        </ul></div>
+      </div>
+    </section>
+
+    <!-- ---------- COUNTRY GUIDES ---------- -->
+    <section class="mt-block" id="m-guides">
+      <h3 class="mt-h2"><span class="mt-num">▤</span>Country guides</h3>
+      <p>Each guide walks through the Excel tool for one country with its own maps, tables and findings. Pick a country to read it here, or open it full page.</p>
+      <div class="na-controls" id="guide-chips" role="group" aria-label="Country guide">
+        <button type="button" class="na-chip" data-guide="tunisia" aria-pressed="true">Tunisia</button>
+        <button type="button" class="na-chip" data-guide="algeria" aria-pressed="false">Algeria</button>
+        <button type="button" class="na-chip" data-guide="morocco" aria-pressed="false">Morocco</button>
+        <button type="button" class="na-chip" data-guide="libya" aria-pressed="false">Libya</button>
+        <button type="button" class="na-chip" data-guide="egypt" aria-pressed="false">Egypt</button>
+        <a class="mt-open" id="guide-open" href="guides/tunisia.html" target="_blank" rel="noopener">Open full page ↗</a>
+      </div>
+      <iframe class="mt-guide" id="guide-frame" title="Country guide" src="guides/tunisia.html" loading="lazy"></iframe>
+    </section>
+  </section>
+
+</div>
+
+
+<footer class="wwf-foot">
+<span>Data: WDPA/WD-OECM October 2026 (UNEP-WCMC &amp; IUCN); World Database of Key Biodiversity Areas, September 2026; RESOLVE Ecoregions 2017; Marine Ecoregions of the World; HydroRIVERS; GLWD v2. Analysis: GBF Indicator 3.1 workbooks for each country.</span>
+<span>WWF® and ©1986 Panda Symbol are owned by WWF. All rights reserved.</span>
+</footer>
+</div>
+<script src="oecm.js?v=4"></script>
+<script src="app.js?v=3"></script>
+<script>
+(() => {
+  const frame = document.getElementById('guide-frame'), open = document.getElementById('guide-open');
+  document.querySelectorAll('#guide-chips [data-guide]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('#guide-chips [data-guide]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    frame.src = `guides/${b.dataset.guide}.html`; open.href = `guides/${b.dataset.guide}.html`;
+  }));
+  document.querySelectorAll('.mt-toc a').forEach((a) => a.addEventListener('click', (e) => {
+    const t = document.getElementById(a.getAttribute('href').slice(1)); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  }));
+})();
+</script>
+
+</body>
+</html>
