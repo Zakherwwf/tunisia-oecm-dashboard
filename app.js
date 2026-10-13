@@ -527,5 +527,4 @@
   window.oecmShowTab = (t) => showTab(t);
   const named = location.hash.slice(1).split('/')[0];
   if (['overview', 'country', 'oecm', 'compare', 'report', 'methodology'].includes(named)) showTab(named, false);
-  else showTab('oecm', false);          // the Tunisia dashboard opens on its OECM page
 })();

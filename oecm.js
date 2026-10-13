@@ -643,8 +643,7 @@
       .forEach((x) => lim.append(el('li', null, x)));
     const files = el('ul');
     [['downloads/oecm_complexes.csv', 'Site complexes: evidence, score, priority, criteria status, next steps'], ['downloads/oecm_candidates.csv', 'Every candidate record with its complex and score'],
-      ['downloads/oecm_kbas.csv', 'KBAs: gap today and what each priority would fill'], ['downloads/oecm_complexes.gpkg', 'Complex outlines (net of counted PAs, WGS 84) for GIS'],
-      ['downloads/Tunisia_OECM_opportunities.pdf', 'The report: OECMs in Tunisia, where to start (discussion draft, 43 pages)']]
+      ['downloads/oecm_kbas.csv', 'KBAs: gap today and what each priority would fill'], ['downloads/oecm_complexes.gpkg', 'Complex outlines (net of counted PAs, WGS 84) for GIS']]
       .forEach(([href, txt]) => { const li = el('li'); const a = el('a', null, href.split('/')[1]); a.href = href; a.download = ''; li.append(a, ` — ${txt}`); files.append(li); });
     box.replaceChildren(ol, el('h3', null, 'Measure types (expert judgements, set in 06_oecm/scripts/oecm_measures.yaml)'), tbx,
       el('h3', null, 'Limits'), lim, el('h3', null, 'Downloads'), files, p(s.note));
