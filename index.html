@@ -358,6 +358,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
       <p class="wwf-kicker">GBF Headline Indicator 3.1 · Target 3</p>
       <h1>North Africa 30×30</h1>
       <p class="wwf-sub">Protected areas, OECMs and Key Biodiversity Areas in Tunisia, Algeria, Morocco, Libya and Egypt</p>
+      <p class="wwf-sub"><b>Version with Western Sahara included in Morocco.</b> Morocco's figures here differ from Protected Planet's, which leave Western Sahara out.</p>
     </div>
     <img class="wwf-logo" src="img/wwf_logo.jpg" alt="WWF">
   </header>
@@ -831,7 +832,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
       <div class="mt-example"><p class="mt-ex-h">Example · Tunisia's coastal lagoons</p>
         <p>Lac de Tunis, Halk El Menzel and the Kneiss flats sit between the land outline and the EEZ. Before the fix, 40 km² of protected lagoon was counted nowhere. Closing the gaps added 113 km² to the marine realm and raised Tunisia's sea coverage from 1.04% to 1.07%. Filling lake holes added 11 km² to the land.</p></div>
       <div class="mt-example"><p class="mt-ex-h">Example · disputed territories</p>
-        <p><b>Morocco:</b> geoBoundaries includes Western Sahara (685,174 km²); Protected Planet and the Marine Regions EEZ do not. We cut the land at the 27°40′N border (415,235 km², within 0.3% of Protected Planet's 414,105 km²). Including it would lower land coverage from 33.7% to about 20%. <b>Egypt:</b> the Halaib Triangle, claimed by Egypt and Sudan, was taken as the overlap of the two countries' geoBoundaries outlines (18,042 km²) and removed; with it, coverage is 12.81% instead of 11.24%.</p></div>
+        <p><b>Morocco:</b> this version of the dashboard counts Western Sahara as part of Morocco. geoBoundaries includes it (685,174 km² of land); Protected Planet and the Marine Regions EEZ do not, so we add the Marine Regions "Overlapping claim Western Sahara" zone to the Moroccan EEZ (566,673 km² of sea in all) and count the six KBAs south of 27°40′N. The WDPA has no site there, so coverage falls from 33.70% to 20.42% on land and from 0.33% to 0.16% at sea. <b>Egypt:</b> the Halaib Triangle, claimed by Egypt and Sudan, was taken as the overlap of the two countries' geoBoundaries outlines (18,042 km²) and removed; with it, coverage is 12.81% instead of 11.24%.</p></div>
       <div class="mt-pitfall"><b>Common mistake.</b> Taking the land area from one source (a statistics yearbook) and the protected areas from another map. Use one base map for every area in the workbook.</div>
     </section>
 
@@ -999,7 +1000,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
       </ol>
       <div class="mt-example"><p class="mt-ex-h">Example · Algeria's Cultural Parks</p>
         <p>The five Cultural Parks sum to 1,233,094 km². The Tassili n'Ajjer World Heritage Site, a protected area, overlaps the Tassili Cultural Park on 75,470 km². After erasing all protected area, the OECMs add 1,151,696 km² (49.67% of land) to the protected areas' 107,764 km² (4.65%), for 54.32% in total, close to Protected Planet's 54.41%.</p></div>
-      <div class="mt-callout mt-c-orange"><b>Check before you count an OECM.</b> CBD decision 14/8 sets criteria: a defined area, effective governance and management, and sustained positive outcomes for biodiversity. The indicator counts what a country reports, but the report should explain the evidence. In Morocco, 221 hunting reserves supply 29.7 points of the land figure and none has an effectiveness evaluation.</div>
+      <div class="mt-callout mt-c-orange"><b>Check before you count an OECM.</b> CBD decision 14/8 sets criteria: a defined area, effective governance and management, and sustained positive outcomes for biodiversity. The indicator counts what a country reports, but the report should explain the evidence. In Morocco, 221 hunting reserves supply 18.0 points of the land figure (29.7 points without Western Sahara) and none has an effectiveness evaluation.</div>
     </section>
 
     <!-- ---------- STEP 8 ---------- -->
@@ -1026,12 +1027,12 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
         <div><p class="mt-ex-h">Worked example · Egypt</p>
           <p>Land: 110,805 km² ÷ 986,014 km² = <b>11.24%</b>. Gap: 18.76 points × 986,014 km² ÷ 100 = <b>184,999 km²</b> more needed.<br>Sea: 8,821 km² ÷ 243,974 km² = <b>3.62%</b>; 64,371 km² more needed.</p></div>
         <div><p class="mt-ex-h">Regional figure</p>
-          <p>For the five countries together, covered areas and total areas are summed first, then divided: 1,524,625 km² ÷ 5,505,680 km² = <b>27.69%</b> of land. This is not the average of the five percentages, which would give large and small countries the same weight.</p></div>
+          <p>For the five countries together, covered areas and total areas are summed first, then divided: 1,524,625 km² ÷ 5,775,619 km² = <b>26.40%</b> of land. This is not the average of the five percentages, which would give large and small countries the same weight.</p></div>
       </div>
       <div class="mt-results">
         <div class="mt-res"><span>Tunisia</span><b>7.93%</b><em>sea 1.07%</em></div>
         <div class="mt-res"><span>Algeria</span><b>54.32%</b><em>sea 0.07%</em></div>
-        <div class="mt-res"><span>Morocco</span><b>33.70%</b><em>sea 0.33%</em></div>
+        <div class="mt-res"><span>Morocco</span><b>20.42%</b><em>sea 0.16%</em></div>
         <div class="mt-res"><span>Libya</span><b>0.13%</b><em>sea 0.63%</em></div>
         <div class="mt-res"><span>Egypt</span><b>11.24%</b><em>sea 3.62%</em></div>
       </div>
@@ -1112,7 +1113,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
         <li><b>Sites with no year</b> get an expected value: the method assigns them random years from the country's other sites 1,000 times and takes the median; the tool uses the expected value of that procedure, and also shows the lower bound with dated sites only.</li>
         <li><b>Read the curve as steps</b>: coverage only changes when a site is designated.</li>
       </ol>
-      <div class="mt-example"><p class="mt-ex-h">Example</p><p>Morocco's land coverage jumps from 4.0% to 33.7% in 2021, the year 221 hunting reserves were reported as OECMs.</p></div>
+      <div class="mt-example"><p class="mt-ex-h">Example</p><p>Morocco's land coverage jumps from 2.4% to 20.4% in 2021, the year 221 hunting reserves were reported as OECMs.</p></div>
     </section>
 
     <!-- ---------- STEP 11 ---------- -->
@@ -1150,7 +1151,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
         <table class="mt-table"><thead><tr><th>Country</th><th>This analysis, land</th><th>Protected Planet, land</th><th>National figure</th></tr></thead><tbody>
           <tr><td>Tunisia</td><td>7.93%</td><td>7.91%</td><td>7.86% (7th National Report, 2026)</td></tr>
           <tr><td>Algeria</td><td>54.32%</td><td>54.41%</td><td>Cultural Parks 43.77% of the territory (7th NR)</td></tr>
-          <tr><td>Morocco</td><td>33.70%</td><td>33.75%</td><td>24.2% in 2025 (7th NR, national data set)</td></tr>
+          <tr><td>Morocco</td><td>20.42% (33.70% without Western Sahara)</td><td>33.75% (Western Sahara excluded)</td><td>24.2% in 2025 (7th NR, national data set)</td></tr>
           <tr><td>Libya</td><td>0.13%</td><td>0.13%</td><td>about 0.16% (NBSAP, 2010 figure)</td></tr>
           <tr><td>Egypt</td><td>11.24% (12.81% with Halaib)</td><td>13.12%</td><td>14.9% of land and sea (NBSAP)</td></tr>
         </tbody></table></div>
@@ -1175,7 +1176,7 @@ html,body{margin:0;background:var(--wwf-white);color:var(--wwf-black)}
       <div class="mt-tablebox"><table class="mt-table mt-dec"><thead><tr><th>Country</th><th>Base map</th><th>Exclusions</th><th>OECMs</th><th>Special handling</th></tr></thead><tbody>
         <tr><td><b>Tunisia</b></td><td>geoBoundaries land; EEZ v12; coastal lagoons (113 km²) added to the sea</td><td>7 proposed points, 3 biosphere reserves</td><td>None reported</td><td>Ichkeul 2025 evaluation and three biosphere-reserve (BREMi) evaluations moved to the national parks</td></tr>
         <tr><td><b>Algeria</b></td><td>geoBoundaries land; EEZ v12</td><td>8 biosphere reserves</td><td>5 Cultural Parks, 49.67% of land</td><td>Six BREMi evaluations moved to national parks; 2 KBA points without area not measured</td></tr>
-        <tr><td><b>Morocco</b></td><td>Western Sahara excluded (land cut at 27°40′N; Moroccan EEZ only)</td><td>42 proposed sites, 3 biosphere reserves</td><td>221 hunting reserves, 117 SIBEs, 31.56% of land</td><td>6 KBAs in Western Sahara set aside; 3 KBA points buffered; Al Hoceima evaluation moved to the national park</td></tr>
+        <tr><td><b>Morocco</b></td><td>Western Sahara included (full geoBoundaries outline; Moroccan EEZ plus the Western Sahara zone)</td><td>42 proposed sites, 3 biosphere reserves</td><td>221 hunting reserves, 117 SIBEs, 19.13% of land</td><td>6 KBAs in Western Sahara counted; 3 KBA points buffered; Al Hoceima evaluation moved to the national park</td></tr>
         <tr><td><b>Libya</b></td><td>geoBoundaries land; Libyan EEZ only (Egypt–Libya overlap not counted)</td><td>None</td><td>None reported</td><td>All 5 sites are points, buffered; national network (41 sites) not in the WDPA</td></tr>
         <tr><td><b>Egypt</b></td><td>Halaib Triangle excluded from land and sea; sensitivity with it</td><td>13 proposed areas, 2 biosphere reserves</td><td>None reported</td><td>3 KBAs in Halaib set aside; BREMi and Ramsar evaluations moved; Nile Delta grouped with deserts by the biome crosswalk</td></tr>
       </tbody></table></div>
